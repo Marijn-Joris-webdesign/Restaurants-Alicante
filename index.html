@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concierto Cafeteria — Playa Flamenca, Alicante</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <noscript><style>.fade-up{opacity:1!important;transform:none!important;}</style></noscript>
+  <style>
+    /* ─── DESIGN TOKENS ─── */
+    :root {
+      --terracotta:    #C17C4B;
+      --terracotta-dk: #A5633A;
+      --warm-white:    #F5F0E8;
+      --ink-black:     #111111;
+      --med-blue:      #4C7579;
+      --med-blue-dk:   #3A5C60;
+      --olive:         #6A7D4C;
+      --sand:          #E0D0B8;
+      --ochre:         #D4A843;
+      --ochre-dk:      #B8903A;
+      --wood:          #8A4535;
+      --grey:          #7A7A74;
+      --sea:           #8FAFB6;
+      --charcoal:      #3D3D37;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--warm-white);
+      color: var(--ink-black);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Grain texture */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      padding: 1.25rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(245,240,232,0.96);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(17,17,17,0.06), 0 4px 24px rgba(17,17,17,0.05);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-logo > a:first-child img { height: 40px; width: auto; }
+    .nav-coaster {
+      display: block; width: 42px; height: 42px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
+      box-shadow: 0 2px 10px rgba(17,17,17,0.14);
+      line-height: 0; font-size: 0;
+      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
+    }
+    .nav-coaster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .nav-coaster:hover { transform: rotate(12deg) scale(1.1); box-shadow: 0 4px 18px rgba(212,168,67,0.4); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--charcoal); text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--terracotta); }
+    .nav-cta {
+      background: var(--terracotta); color: white;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.7rem 1.6rem; border-radius: 50px; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      box-shadow: 0 2px 12px rgba(193,124,75,0.3);
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
+    .nav-cta:hover  { background: var(--terracotta-dk); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(193,124,75,0.4); }
+    .nav-cta:active { transform: translateY(0); }
+
+    /* ─── SHARED BUTTONS ─── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 1.05rem 2.25rem; border-radius: 50px; border: none; cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+    .btn:active { transform: translateY(0) !important; }
+
+    .btn-primary { background: var(--terracotta); color: #fff; box-shadow: 0 4px 20px rgba(193,124,75,0.3); }
+    .btn-primary:hover { background: var(--terracotta-dk); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(193,124,75,0.4); }
+
+    .btn-blue { background: transparent; color: var(--ink-black); border: 2px solid var(--med-blue); }
+    .btn-blue:hover { background: var(--med-blue); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(76,117,121,0.25); }
+
+    .btn-ochre { background: var(--ochre); color: var(--ink-black); box-shadow: 0 4px 20px rgba(212,168,67,0.3); }
+    .btn-ochre:hover { background: var(--ochre-dk); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(212,168,67,0.4); }
+
+    .btn-light { background: transparent; color: rgba(245,240,232,0.9); border: 2px solid rgba(245,240,232,0.3); }
+    .btn-light:hover { border-color: rgba(245,240,232,0.7); color: #fff; background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+
+    .btn-white { background: #fff; color: var(--terracotta); box-shadow: 0 4px 20px rgba(17,17,17,0.18); }
+    .btn-white:hover { background: var(--warm-white); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(17,17,17,0.25); }
+
+    /* ─── EYEBROW ─── */
+    .eyebrow {
+      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
+      margin-bottom: 1.1rem; display: flex; align-items: center; gap: 0.75rem;
+      color: var(--terracotta);
+    }
+    .eyebrow span { display: block; width: 1.5rem; height: 1px; background: currentColor; }
+    .eyebrow.ochre { color: var(--ochre); }
+    .eyebrow.blue  { color: var(--med-blue); }
+
+    .sec-title {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 700; line-height: 1.12; letter-spacing: -0.025em; color: var(--ink-black);
+    }
+
+    /* ─── HERO ─── */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 78% 65% at 82% 30%, rgba(212,168,67,.11) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 75% at 15% 88%, rgba(76,117,121,.09) 0%, transparent 55%),
+        radial-gradient(ellipse 100% 55% at 50% 0%,  rgba(224,208,184,.5)  0%, transparent 65%),
+        var(--warm-white);
+    }
+
+    .hero-photo {
+      position: absolute; right: 0; top: 0; bottom: 0; width: 52%; overflow: hidden;
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; opacity: .42; mix-blend-mode: multiply; }
+    .hero-photo::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(to right, var(--warm-white) 0%, rgba(245,240,232,.12) 42%, transparent 100%),
+        linear-gradient(to top, rgba(212,168,67,.16) 0%, transparent 50%);
+    }
+
+    .hero-inner {
+      position: relative; z-index: 10;
+      max-width: 1240px; margin: 0 auto; padding: 0 2.5rem; padding-top: 6rem; width: 100%;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--terracotta); margin-bottom: 1.75rem;
+      display: flex; align-items: center; gap: 0.85rem;
+      opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
+    }
+    .hero-eyebrow span { display: block; width: 2.25rem; height: 1px; background: var(--terracotta); }
+
+    .hero-h1 {
+      font-size: clamp(3.6rem, 8vw, 7.2rem);
+      font-weight: 700; line-height: 1.0; letter-spacing: -0.025em; color: var(--ink-black);
+      margin-bottom: 1.25rem;
+      opacity: 0; animation: fadeUp 0.85s ease 0.38s forwards;
+    }
+    .hero-h1 em { font-style: italic; color: var(--terracotta); }
+
+    .hero-tagline {
+      font-family: 'Playfair Display', serif; font-size: 1.05rem; font-style: italic;
+      color: var(--grey); margin-bottom: 1.75rem; line-height: 1.6;
+      opacity: 0; animation: fadeUp 0.8s ease 0.52s forwards;
+    }
+
+    .hero-sub {
+      font-size: 0.95rem; font-weight: 300; line-height: 1.8;
+      color: var(--charcoal); max-width: 420px; margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp 0.8s ease 0.64s forwards;
+    }
+
+    .hero-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+      opacity: 0; animation: fadeUp 0.8s ease 0.78s forwards;
+    }
+
+    .hero-feats {
+      display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 3rem;
+      opacity: 0; animation: fadeUp 0.8s ease 0.98s forwards;
+    }
+    .hfeat {
+      display: flex; align-items: center; gap: 0.55rem;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--grey);
+    }
+    .hfeat svg { color: var(--terracotta); flex-shrink: 0; }
+
+    /* ─── MARQUEE ─── */
+    .marquee-strip { background: var(--ochre); padding: 0.85rem 0; overflow: hidden; white-space: nowrap; }
+    .marquee-track { display: inline-flex; animation: marquee 26s linear infinite; }
+    .marquee-item {
+      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+      color: rgba(17,17,17,0.68); padding: 0 2.5rem;
+      display: inline-flex; align-items: center; gap: 1rem;
+    }
+    .marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(17,17,17,0.28); }
+
+    /* ─── ABOUT ─── */
+    .about-sec { padding: 9rem 2.5rem; background: var(--warm-white); }
+    .about-grid {
+      max-width: 1240px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: center;
+    }
+    .about-imgs { position: relative; }
+    .about-main { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+    .about-overlay { position: absolute; bottom: -2.5rem; right: -2rem; width: 52%; aspect-ratio: 1; overflow: hidden; border: 5px solid var(--warm-white); box-shadow: 0 8px 48px rgba(17,17,17,0.14); }
+    .about-overlay img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-badge {
+      position: absolute; top: 2.5rem; left: -1.5rem;
+      background: var(--ochre); color: var(--ink-black);
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 0.92rem; padding: 0.8rem 1.4rem;
+      box-shadow: 0 4px 24px rgba(212,168,67,0.38); white-space: nowrap;
+    }
+    .about-body { font-size: 0.95rem; font-weight: 300; line-height: 1.9; color: var(--charcoal); margin: 1.5rem 0; }
+    .about-feats { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-top: 2.5rem; }
+    .afeat { display: flex; flex-direction: column; gap: 0.45rem; }
+    .afeat svg { width: 26px; height: 26px; color: var(--terracotta); }
+    .afeat-lbl { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--charcoal); }
+
+    /* ─── MENU ─── */
+    .menu-sec { padding: 9rem 2.5rem; background: var(--ink-black); position: relative; overflow: hidden; }
+    .menu-sec::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 60% at 85% 20%, rgba(212,168,67,.07) 0%, transparent 55%),
+        radial-gradient(ellipse 45% 70% at 10% 80%, rgba(76,117,121,.07) 0%, transparent 55%);
+    }
+    .menu-top { max-width: 1240px; margin: 0 auto 4.5rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem; }
+    .menu-top .sec-title { color: var(--warm-white); }
+    .menu-tabs { display: flex; border-bottom: 1px solid rgba(245,240,232,0.12); }
+    .m-tab {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(245,240,232,0.32); padding: 0.8rem 1.4rem;
+      border: none; border-bottom: 2px solid transparent; margin-bottom: -1px;
+      background: none; cursor: pointer;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .m-tab.active, .m-tab:hover { color: var(--warm-white); border-bottom-color: var(--terracotta); }
+    .menu-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5px; background: rgba(245,240,232,0.06); }
+    .menu-card { background: rgba(17,17,17,0.6); padding: 2.5rem 2.25rem; position: relative; cursor: pointer; transition: background 0.3s ease; }
+    .menu-card:hover { background: rgba(212,168,67,0.06); }
+    .card-img { width: 100%; aspect-ratio: 3/2; overflow: hidden; margin-bottom: 1.6rem; }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.7); transition: filter 0.35s ease, transform 0.55s cubic-bezier(.25,.46,.45,.94); }
+    .menu-card:hover .card-img img { filter: saturate(1.05); transform: scale(1.04); }
+    .card-tag  { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ochre); margin-bottom: 0.5rem; }
+    .card-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; color: var(--warm-white); line-height: 1.3; margin-bottom: 0.65rem; }
+    .card-desc { font-size: 0.82rem; font-weight: 300; line-height: 1.72; color: rgba(245,240,232,0.42); }
+    .card-price { position: absolute; top: 2.25rem; right: 2.25rem; font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--terracotta); }
+    .menu-cta { text-align: center; margin-top: 3.5rem; }
+
+    /* ─── GALLERY ─── */
+    .gallery-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 3px; background: var(--sand); }
+    .gcell { position: relative; aspect-ratio: 3/4; overflow: hidden; }
+    .gcell img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.72); transition: transform 0.55s cubic-bezier(.25,.46,.45,.94), filter 0.35s ease; }
+    .gcell:hover img { transform: scale(1.06); filter: saturate(1.1); }
+    .gcell::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(17,17,17,0.5) 0%, transparent 55%); }
+
+    /* ─── TAGLINE STRIP ─── */
+    .tagline-strip {
+      background: var(--sand); padding: 5.5rem 2.5rem; text-align: center; position: relative; overflow: hidden;
+    }
+    .tagline-strip::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 110% at 50% 110%, rgba(193,124,75,.1) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .tq-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.55rem, 3.5vw, 2.6rem); font-style: italic; font-weight: 400;
+      line-height: 1.45; color: var(--ink-black); max-width: 820px; margin: 0 auto;
+      letter-spacing: -0.01em;
+    }
+    .tq-quote strong { font-style: normal; font-weight: 700; color: var(--terracotta); }
+    .tq-attr { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grey); margin-top: 1.5rem; }
+    .tq-pills { display: flex; gap: 0.65rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem; }
+    .pill {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.42rem 1.1rem; border-radius: 50px;
+      border: 1px solid rgba(17,17,17,0.14); color: var(--charcoal); background: rgba(245,240,232,0.65);
+    }
+
+    /* ─── EVENTS / MUSIC ─── */
+    .events-sec {
+      padding: 9rem 2.5rem; background: var(--ink-black);
+      position: relative; overflow: hidden;
+    }
+    .events-sec::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 65% 60% at 28% 42%, rgba(212,168,67,.13) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 70% at 82% 72%, rgba(193,124,75,.09) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 45% at 60% 12%, rgba(212,168,67,.07) 0%, transparent 55%);
+    }
+    .music-deco {
+      position: absolute; top: 2.5rem; right: 3rem;
+      font-size: 9rem; color: var(--ochre); opacity: 0.04;
+      font-family: serif; line-height: 1; user-select: none; pointer-events: none;
+    }
+    .events-grid {
+      max-width: 1240px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: center;
+      position: relative;
+    }
+    .events-sec .sec-title { color: var(--warm-white); }
+    .events-body { font-size: 0.95rem; font-weight: 300; line-height: 1.85; color: rgba(245,240,232,0.52); margin: 1.5rem 0 2.5rem; }
+    .event-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .ev-item {
+      display: flex; align-items: center; gap: 1.5rem;
+      padding: 1.1rem 1.25rem; cursor: pointer;
+      border: 1px solid rgba(212,168,67,0.1); background: rgba(212,168,67,0.03);
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .ev-item:hover { border-color: rgba(212,168,67,0.32); background: rgba(212,168,67,0.08); }
+    .ev-date { text-align: center; min-width: 2.8rem; }
+    .ev-day { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 700; color: var(--ochre); line-height: 1; }
+    .ev-mon { font-size: 0.54rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(212,168,67,0.5); margin-top: 0.12rem; }
+    .ev-sep { width: 1px; height: 2.5rem; background: rgba(245,240,232,0.08); flex-shrink: 0; }
+    .ev-info { flex: 1; }
+    .ev-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--warm-white); }
+    .ev-meta  { font-size: 0.7rem; font-weight: 400; letter-spacing: 0.06em; color: rgba(245,240,232,0.32); margin-top: 0.2rem; }
+    .ev-arr   { color: rgba(212,168,67,0.22); transition: color 0.2s ease; flex-shrink: 0; }
+    .ev-item:hover .ev-arr { color: var(--ochre); }
+
+    .events-photo { position: relative; }
+    .events-photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+    .events-photo-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(17,17,17,0.88) 0%, rgba(212,168,67,0.05) 55%, transparent 100%); pointer-events: none; }
+    .events-caption { position: absolute; bottom: 1.75rem; left: 1.75rem; right: 1.75rem; }
+    .events-caption .etag { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ochre); margin-bottom: 0.45rem; }
+    .events-caption .ettl { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 600; color: white; }
+    .events-caption .esub { font-size: 0.8rem; color: rgba(245,240,232,0.48); margin-top: 0.3rem; }
+
+    /* ─── LOCATION ─── */
+    .loc-sec { padding: 9rem 2.5rem; background: var(--warm-white); }
+    .loc-grid {
+      max-width: 1240px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 7rem; align-items: start;
+    }
+    .loc-map-wrap { position: relative; }
+    .loc-map { width: 100%; aspect-ratio: 4/3; overflow: hidden; position: relative; display: block; }
+    .loc-pin {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      background: var(--terracotta); color: white;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.55rem 1.1rem; border-radius: 50px;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .loc-info { padding-top: 0.5rem; }
+    .contact-list { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 2.25rem; }
+    .clnk {
+      display: flex; align-items: flex-start; gap: 1rem;
+      font-size: 0.9rem; font-weight: 300; color: var(--charcoal); text-decoration: none;
+      transition: color 0.2s ease; line-height: 1.5;
+    }
+    .clnk:hover { color: var(--terracotta); }
+    .clnk svg { width: 17px; height: 17px; color: var(--terracotta); flex-shrink: 0; margin-top: 2px; }
+    .hours-tbl { margin-top: 2.75rem; }
+    .hours-head { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--ink-black); margin-bottom: 1rem; }
+    .hrow { display: flex; justify-content: space-between; padding: 0.65rem 0; border-bottom: 1px solid rgba(17,17,17,0.08); font-size: 0.85rem; }
+    .hrow:last-child { border-bottom: none; }
+    .hday  { font-weight: 500; color: var(--charcoal); }
+    .htime { font-weight: 400; color: var(--grey); }
+    .htime.open { color: var(--terracotta); font-weight: 600; }
+
+    /* ─── CTA BAND ─── */
+    .cta-band {
+      padding: 9rem 2.5rem; background: var(--ink-black);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-band::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 65% 80% at 25% 55%, rgba(193,124,75,.12) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 65% at 78% 30%, rgba(212,168,67,.09) 0%, transparent 55%);
+    }
+    .cta-pre { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ochre); margin-bottom: 2rem; position: relative; }
+    .cta-title {
+      font-size: clamp(2.8rem, 6.5vw, 5.8rem);
+      font-weight: 700; letter-spacing: -0.03em; line-height: 1.04; color: var(--warm-white);
+      margin-bottom: 0.25rem; position: relative;
+    }
+    .cta-title em { font-style: italic; color: var(--terracotta); }
+    .cta-payoff {
+      font-family: 'Playfair Display', serif; font-size: clamp(1rem, 1.8vw, 1.45rem);
+      font-style: italic; color: rgba(245,240,232,0.45);
+      margin: 1rem 0 3rem; position: relative;
+    }
+    .cta-payoff strong { color: rgba(245,240,232,0.85); font-style: normal; font-weight: 600; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    /* ─── FOOTER ─── */
+    footer { background: #0D0D0D; padding: 4.5rem 2.5rem 2rem; }
+    .footer-top {
+      max-width: 1240px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 3.5rem;
+      padding-bottom: 3rem; border-bottom: 1px solid rgba(245,240,232,0.07);
+    }
+    .ft-logo img { height: 36px; filter: invert(1); margin-bottom: 1.1rem; }
+    .ft-tagline { font-size: 0.84rem; font-weight: 300; line-height: 1.78; color: rgba(245,240,232,0.36); }
+    .ft-socials { display: flex; gap: 0.75rem; margin-top: 1.75rem; }
+    .soc {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 1px solid rgba(245,240,232,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(245,240,232,0.32); text-decoration: none;
+      transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+    }
+    .soc:hover { border-color: var(--ochre); color: var(--ochre); background: rgba(212,168,67,0.07); }
+    .ft-head { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1.3rem; }
+    .ft-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .ft-links a { font-size: 0.85rem; font-weight: 300; color: rgba(245,240,232,0.38); text-decoration: none; transition: color 0.2s ease; }
+    .ft-links a:hover { color: var(--warm-white); }
+    .footer-bottom {
+      max-width: 1240px; margin: 2rem auto 0;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    .ft-copy { font-size: 0.72rem; color: rgba(245,240,232,0.18); }
+    .ft-copy a { color: inherit; text-decoration: none; }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .fade-up.vis { opacity: 1; transform: translateY(0); }
+    .fade-up.d1 { transition-delay: 0.1s; }
+    .fade-up.d2 { transition-delay: 0.22s; }
+    .fade-up.d3 { transition-delay: 0.34s; }
+    .fade-up.d4 { transition-delay: 0.46s; }
+
+    @keyframes fadeUp  { from { opacity:0; transform:translateY(26px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+
+    /* ─── MOBILE NAV ─── */
+    .nav-mob-tel { display:none; color:var(--ink-black); line-height:0; padding:0.4rem; }
+    .nav-mob {
+      display:none; flex-direction:column; justify-content:center; gap:5px;
+      background:none; border:none; cursor:pointer; padding:6px 2px; z-index:200; margin-left:0.5rem;
+    }
+    .nav-mob span { display:block; width:22px; height:2px; background:var(--ink-black); border-radius:2px; transition:transform .3s ease, opacity .2s ease; }
+    .nav-mob.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .nav-mob.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+    .nav-mob.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav-cta { display:none; }
+      .nav-mob, .nav-mob-tel { display:flex; }
+      .nav-links {
+        position:fixed; top:0; left:0; right:0; bottom:0;
+        background:var(--warm-white);
+        display:flex !important; flex-direction:column; align-items:center; justify-content:center; gap:0;
+        transform:translateX(100%); transition:transform .4s cubic-bezier(.4,0,.2,1); z-index:150;
+      }
+      .nav-links.open { transform:translateX(0); }
+      .nav-links li { width:100%; text-align:center; border-bottom:1px solid var(--sand); }
+      .nav-links li:first-child { border-top:1px solid var(--sand); }
+      .nav-links li a { display:block; padding:1.3rem 2rem; font-size:1.15rem; font-weight:500; letter-spacing:0.04em; }
+
+      .hero { min-height:100svh; }
+      .hero-photo { display:none; }
+      .hero-inner { padding:5.5rem 1.5rem 0; }
+      .hero-h1 { font-size:clamp(2.8rem,11vw,5.5rem); }
+      .hero-sub { max-width:100%; }
+      .hero-btns { flex-direction:column; gap:0.75rem; }
+      .hero-btns .btn { width:100%; justify-content:center; }
+      .hero-feats { margin-bottom:3rem; gap:1.25rem; }
+
+      .about-sec, .events-sec, .loc-sec { padding:5rem 1.5rem; }
+      .menu-sec { padding:5rem 1.5rem; }
+      .about-grid, .events-grid, .loc-grid { grid-template-columns:1fr; gap:3rem; }
+      .about-badge { left:0; }
+      .about-overlay { display:none; }
+      .menu-grid { grid-template-columns:1fr; }
+      .gallery-strip { grid-template-columns:repeat(2,1fr); }
+      .gcell { aspect-ratio:1; }
+      .menu-top { flex-direction:column; align-items:flex-start; gap:1.5rem; }
+      .cta-band { padding:5.5rem 1.5rem; }
+      .cta-btns { flex-direction:column; align-items:stretch; max-width:320px; margin:0 auto; }
+      .cta-btns .btn { justify-content:center; }
+      .footer-top { grid-template-columns:1fr; gap:2rem; }
+      .footer-top > div:first-child { padding-bottom:0.5rem; border-bottom:1px solid rgba(245,240,232,0.07); }
+      .tagline-strip { padding:4rem 1.5rem; }
+    }
+
+    @media (max-width: 540px) {
+      .footer-top { grid-template-columns:1fr; }
+      .hero-h1 { font-size:clamp(2.4rem,12vw,3.8rem); }
+      .sec-title { font-size:clamp(1.9rem,9vw,3rem); }
+      .about-sec, .menu-sec, .events-sec, .loc-sec { padding:4rem 1.25rem 5rem; }
+      .hours-badge { font-size:0.6rem; padding:0.45rem 0.85rem; flex-wrap:wrap; line-height:1.6; max-width:calc(100vw - 3rem); }
+      .hours-tbl { padding-right:3.5rem; }
+      .menu-tabs { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+      .m-tab { white-space:nowrap; padding:0.8rem 1rem; }
+      .wa-float { width:50px; height:50px; bottom:1.25rem; right:1.25rem; }
+      .wa-float svg { width:23px; height:23px; }
+      .footer-top { padding-bottom:2.5rem; }
+    }
+
+    /* ─── WHATSAPP FLOAT ─── */
+    .wa-float {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 600;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25D366; color: white;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.14);
+      text-decoration: none;
+      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
+    }
+    .wa-float:hover { transform: scale(1.13); box-shadow: 0 8px 36px rgba(37,211,102,0.55), 0 4px 14px rgba(0,0,0,0.16); }
+    .wa-float:active { transform: scale(1.04); }
+
+    /* ─── HOURS BADGE (hero) ─── */
+    .hours-badge {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: rgba(245,240,232,0.85); backdrop-filter: blur(8px);
+      border: 1px solid rgba(17,17,17,0.08);
+      padding: 0.55rem 1.1rem; margin-bottom: 1.75rem;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--charcoal);
+      opacity: 0; animation: fadeUp 0.8s ease 0.06s forwards;
+    }
+    .hours-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; flex-shrink: 0;
+      box-shadow: 0 0 0 2px rgba(34,197,94,0.25); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{box-shadow:0 0 0 2px rgba(34,197,94,0.25);} 50%{box-shadow:0 0 0 5px rgba(34,197,94,0.12);} }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="nav">
+  <div class="nav-logo">
+    <a href="#"><img src="brand_assets/Logo concierto cafetaria.png" alt="Concierto Cafeteria"></a>
+    <a href="#" class="nav-coaster" aria-label="Mascota Concierto">
+      <img src="brand_assets/WhatsApp%20Image%202026-05-28%20at%2022.25.05.jpeg" alt="Concierto coaster">
+    </a>
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#menu">Carta</a></li>
+    <li><a href="#events">Música</a></li>
+    <li><a href="#location">Ubicación</a></li>
+  </ul>
+  <a href="tel:+34657373736" class="nav-cta btn">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Reservar mesa
+  </a>
+  <a href="tel:+34657373736" class="nav-mob-tel" aria-label="Llamar">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.007 1.17 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <button id="nav-mob" class="nav-mob" aria-label="Menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-photo">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80" alt="">
+  </div>
+  <div class="hero-inner">
+    <div class="hours-badge">
+      <span class="hours-dot"></span>
+      Abierto hoy · Lun–Vie 08:00–23:00 &nbsp;·&nbsp; Sáb 08:00–00:00 &nbsp;·&nbsp; Dom 09:00–22:00
+    </div>
+    <div class="hero-eyebrow"><span></span>Playa Flamenca · Alicante</div>
+    <h1 class="hero-h1">Buena comida,<br><em>buena música.</em></h1>
+    <p class="hero-tagline">Good drinks, good people, good music.</p>
+    <p class="hero-sub">Tu cafetería de siempre en primera línea del Mediterráneo. Terraza, carta de todo el día y música en vivo cada semana.</p>
+    <div class="hero-btns">
+      <a href="tel:+34657373736" class="btn btn-primary">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Reservar mesa
+      </a>
+      <a href="#menu" class="btn btn-blue">
+        Ver la carta
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+    <div class="hero-feats">
+      <div class="hfeat">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        Música en vivo
+      </div>
+      <div class="hfeat">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        Terraza exterior
+      </div>
+      <div class="hfeat">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Ambiente familiar
+      </div>
+      <div class="hfeat">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Abierto todos los días
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Cocina mediterránea<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Música en vivo<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Terraza Playa Flamenca<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Buenos tragos<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Buena compañía<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Open mic & conciertos<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Desayunos · Almuerzos · Cenas<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Cocina mediterránea<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Música en vivo<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Terraza Playa Flamenca<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Buenos tragos<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Buena compañía<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Open mic & conciertos<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Desayunos · Almuerzos · Cenas<span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- ─── ABOUT ─── -->
+<section class="about-sec" id="about">
+  <div class="about-grid">
+    <div class="about-imgs fade-up">
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=640&q=80" alt="Concierto Cafeteria terraza" class="about-main">
+      <div class="about-overlay">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=420&q=80" alt="Café en terraza">
+      </div>
+      <div class="about-badge">Tu sitio de siempre</div>
+    </div>
+    <div>
+      <div class="eyebrow fade-up"><span></span>Nuestra historia</div>
+      <h2 class="sec-title fade-up d1">Un rincón con<br><em style="color:var(--terracotta)">carácter propio</em></h2>
+      <p class="about-body fade-up d2">Concierto Cafeteria lleva años siendo el punto de encuentro de Playa Flamenca. Aquí conviven el café de la mañana, el vermut del mediodía, la carta de todo el día y las noches de música en directo — todo con la misma energía cálida y familiar.</p>
+      <p class="about-body fade-up d3" style="margin-top:-0.5rem;">Somos amigos, familia y vecinos. Un espacio donde la gente repite porque se siente bien, come bien y pasa un buen rato.</p>
+      <div class="about-feats fade-up d4">
+        <div class="afeat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          <span class="afeat-lbl">Cafetería</span>
+        </div>
+        <div class="afeat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          <span class="afeat-lbl">Música live</span>
+        </div>
+        <div class="afeat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="afeat-lbl">Terraza</span>
+        </div>
+        <div class="afeat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          <span class="afeat-lbl">Familiar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MENU ─── -->
+<section class="menu-sec" id="menu">
+  <div class="menu-top">
+    <div class="fade-up">
+      <div class="eyebrow"><span></span>Nuestra carta</div>
+      <h2 class="sec-title">Para comer bien,<br><span style="color:var(--terracotta)">a buen precio.</span></h2>
+    </div>
+    <div class="menu-tabs fade-up d2">
+      <button class="m-tab active" onclick="switchTab(this,'t-desayuno')">Desayunos</button>
+      <button class="m-tab" onclick="switchTab(this,'t-comidas')">Comidas</button>
+      <button class="m-tab" onclick="switchTab(this,'t-bebidas')">Bebidas</button>
+    </div>
+  </div>
+
+  <div class="menu-grid" id="t-desayuno">
+    <div class="menu-card fade-up">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1567529692333-de9fd6772897?auto=format&fit=crop&w=600&q=75" alt="Tostadas con tomate"></div>
+      <div class="card-price">€3.50</div>
+      <div class="card-tag">Clásico de la casa</div>
+      <div class="card-name">Tostadas con tomate & AOVE</div>
+      <p class="card-desc">Pan de masa madre, tomate fresco rallado, aceite de oliva virgen extra y sal en escamas.</p>
+    </div>
+    <div class="menu-card fade-up d1">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=75" alt="Huevos rotos"></div>
+      <div class="card-price">€9.90</div>
+      <div class="card-tag">Favorito local</div>
+      <div class="card-name">Huevos rotos con jamón</div>
+      <p class="card-desc">Huevos de corral sobre patatas fritas caseras y jamón serrano. El plato más pedido de la casa.</p>
+    </div>
+    <div class="menu-card fade-up d2">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=75" alt="Café con leche"></div>
+      <div class="card-price">€5.50</div>
+      <div class="card-tag">Cafetería</div>
+      <div class="card-name">Desayuno completo</div>
+      <p class="card-desc">Café con leche o zumo, tostada con mantequilla y mermelada, más zumo de naranja natural.</p>
+    </div>
+  </div>
+
+  <div class="menu-grid" id="t-comidas" style="display:none">
+    <div class="menu-card fade-up">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=75" alt="Ensalada mediterránea"></div>
+      <div class="card-price">€9.50</div>
+      <div class="card-tag">Fresco y ligero</div>
+      <div class="card-name">Ensalada mediterránea</div>
+      <p class="card-desc">Tomate, pepino, cebolla morada, aceitunas, queso feta y anchoas del Cantábrico.</p>
+    </div>
+    <div class="menu-card fade-up d1">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=75" alt="Bocadillo de calamares"></div>
+      <div class="card-price">€7.80</div>
+      <div class="card-tag">Para llevar</div>
+      <div class="card-name">Bocadillo de calamares</div>
+      <p class="card-desc">Calamares a la romana con alioli casero en barra crujiente recién horneada. Un clásico sin igual.</p>
+    </div>
+    <div class="menu-card fade-up d2">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=75" alt="Menú del día"></div>
+      <div class="card-price">€12</div>
+      <div class="card-tag">Menú del día</div>
+      <div class="card-name">3 platos + bebida incluida</div>
+      <p class="card-desc">Cocina de mercado que cambia a diario. Primero, segundo y postre con bebida incluida.</p>
+    </div>
+  </div>
+
+  <div class="menu-grid" id="t-bebidas" style="display:none">
+    <div class="menu-card fade-up">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=600&q=75" alt="Sangría"></div>
+      <div class="card-price">€6.50</div>
+      <div class="card-tag">Cóctel de la casa</div>
+      <div class="card-name">Sangría de Concierto</div>
+      <p class="card-desc">Vino tinto, brandy, frutas de temporada, limón y un toque secreto de la barra.</p>
+    </div>
+    <div class="menu-card fade-up d1">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=75" alt="Cerveza artesana"></div>
+      <div class="card-price">€3.80</div>
+      <div class="card-tag">Cervezas</div>
+      <div class="card-name">Cerveza artesana de barril</div>
+      <p class="card-desc">Rotación de cervezas artesanas locales. Pregunta al camarero cuál hay hoy.</p>
+    </div>
+    <div class="menu-card fade-up d2">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=75" alt="Vermut"></div>
+      <div class="card-price">€4.50</div>
+      <div class="card-tag">El ritual del domingo</div>
+      <div class="card-name">Vermut de grifo con sifón</div>
+      <p class="card-desc">Vermut rojo, sifón, naranja y aceitunas. Con pica-pica de la casa incluido.</p>
+    </div>
+  </div>
+
+  <div class="menu-cta fade-up">
+    <a href="#" class="btn btn-light">
+      Ver carta completa
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ─── GALLERY STRIP ─── -->
+<div class="gallery-strip" aria-label="Galería Concierto">
+  <div class="gcell"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=500&q=70" alt="Terraza"></div>
+  <div class="gcell"><img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=500&q=70" alt="Amigos"></div>
+  <div class="gcell"><img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=500&q=70" alt="Música en vivo"></div>
+  <div class="gcell"><img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=500&q=70" alt="Gastronomía mediterránea"></div>
+</div>
+
+<!-- ─── TAGLINE STRIP ─── -->
+<div class="tagline-strip">
+  <p class="tq-quote fade-up">"Good drinks, good people, good music.<br><strong>That's Concierto.</strong>"</p>
+  <p class="tq-attr fade-up d1">— Concierto Cafeteria · Playa Flamenca, Alicante</p>
+  <div class="tq-pills fade-up d2">
+    <span class="pill">Abierto todos los días</span>
+    <span class="pill">Terraza mediterránea</span>
+    <span class="pill">Música en vivo</span>
+    <span class="pill">Cocina de mercado</span>
+    <span class="pill">Entrada siempre libre</span>
+  </div>
+</div>
+
+<!-- ─── EVENTS / MUSIC ─── -->
+<section class="events-sec" id="events">
+  <div class="music-deco">♪</div>
+  <div class="events-grid">
+    <div>
+      <div class="eyebrow ochre fade-up"><span></span>Música &amp; Eventos</div>
+      <h2 class="sec-title fade-up d1">El alma de<br><em style="color:var(--ochre)">Concierto</em></h2>
+      <p class="events-body fade-up d2">Cada semana artistas locales e internacionales llenan la terraza de música en directo. Desde jazz acústico hasta flamenco fusión — hay noches que no se olvidan. Entrada siempre libre.</p>
+      <div class="event-list fade-up d3">
+        <div class="ev-item">
+          <div class="ev-date"><div class="ev-day">06</div><div class="ev-mon">Jun</div></div>
+          <div class="ev-sep"></div>
+          <div class="ev-info">
+            <div class="ev-title">Jazz en la terraza</div>
+            <div class="ev-meta">Viernes · 21:00 · Entrada libre</div>
+          </div>
+          <div class="ev-arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="ev-item">
+          <div class="ev-date"><div class="ev-day">13</div><div class="ev-mon">Jun</div></div>
+          <div class="ev-sep"></div>
+          <div class="ev-info">
+            <div class="ev-title">Open Mic Night</div>
+            <div class="ev-meta">Viernes · 20:30 · Sube al escenario</div>
+          </div>
+          <div class="ev-arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="ev-item">
+          <div class="ev-date"><div class="ev-day">20</div><div class="ev-mon">Jun</div></div>
+          <div class="ev-sep"></div>
+          <div class="ev-info">
+            <div class="ev-title">Flamenco Fusión</div>
+            <div class="ev-meta">Viernes · 21:30 · Entrada libre</div>
+          </div>
+          <div class="ev-arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="ev-item">
+          <div class="ev-date"><div class="ev-day">27</div><div class="ev-mon">Jun</div></div>
+          <div class="ev-sep"></div>
+          <div class="ev-info">
+            <div class="ev-title">Noche acústica</div>
+            <div class="ev-meta">Viernes · 21:00 · Entrada libre</div>
+          </div>
+          <div class="ev-arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </div>
+      <div style="margin-top:2rem" class="fade-up d4">
+        <a href="tel:+34657373736" class="btn btn-ochre">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Reservar para el evento
+        </a>
+      </div>
+    </div>
+
+    <div class="events-photo fade-up d2">
+      <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=700&q=80" alt="Música en vivo Concierto">
+      <div class="events-photo-overlay"></div>
+      <div class="events-caption">
+        <div class="etag">Cada viernes</div>
+        <div class="ettl">Música en vivo</div>
+        <div class="esub">Entrada siempre libre · Terraza abierta</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LOCATION ─── -->
+<section class="loc-sec" id="location">
+  <div class="loc-grid">
+    <div class="loc-map-wrap fade-up">
+      <div class="loc-map">
+        <iframe
+          src="https://maps.google.com/maps?q=Concierto+Cafeteria+Playa+Flamenca+Alicante&output=embed&z=15&hl=es"
+          style="border:0;width:100%;height:100%;display:block;"
+          allowfullscreen loading="lazy"
+          title="Ubicación Concierto Cafeteria">
+        </iframe>
+      </div>
+    </div>
+    <div class="loc-info">
+      <div class="eyebrow fade-up"><span></span>Encuéntranos</div>
+      <h2 class="sec-title fade-up d1">Estamos en<br>Playa Flamenca</h2>
+      <div class="contact-list fade-up d2">
+        <a href="https://maps.google.com" target="_blank" class="clnk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Av. de las Naciones, Playa Flamenca<br>03189 Orihuela Costa, Alicante
+        </a>
+        <a href="tel:+34657373736" class="clnk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.007 1.17 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +34 657 373 736
+        </a>
+        <a href="mailto:hola@conciertocafeteria.es" class="clnk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          hola@conciertocafeteria.es
+        </a>
+      </div>
+      <div class="hours-tbl fade-up d3">
+        <div class="hours-head">Horario</div>
+        <div class="hrow"><span class="hday">Lunes – Viernes</span><span class="htime open">08:00 – 23:00</span></div>
+        <div class="hrow"><span class="hday">Sábado</span><span class="htime open">08:00 – 00:00</span></div>
+        <div class="hrow"><span class="hday">Domingo</span><span class="htime open">09:00 – 22:00</span></div>
+      </div>
+      <div class="fade-up d4" style="margin-top:2.5rem">
+        <a href="https://maps.google.com" target="_blank" class="btn btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Cómo llegar
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA BAND ─── -->
+<section class="cta-band">
+  <div class="cta-pre fade-up">Ven a Concierto</div>
+  <h2 class="cta-title fade-up d1">Good drinks,<br><em>good people,</em><br>good music.</h2>
+  <p class="cta-payoff fade-up d2"><strong>That's Concierto.</strong> — Playa Flamenca, Alicante</p>
+  <div class="cta-btns fade-up d3">
+    <a href="tel:+34657373736" class="btn btn-white">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Reservar mesa
+    </a>
+    <a href="#menu" class="btn btn-light">Ver la carta</a>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="ft-logo"><img src="brand_assets/Logo concierto cafetaria.png" alt="Concierto Cafeteria"></div>
+      <p class="ft-tagline">Good drinks, good people,<br>good music. That's Concierto.</p>
+      <div class="ft-socials">
+        <a href="#" class="soc" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="soc" aria-label="Facebook">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="#" class="soc" aria-label="TripAdvisor">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-head">Carta</div>
+      <ul class="ft-links">
+        <li><a href="#menu">Desayunos</a></li>
+        <li><a href="#menu">Comidas & tapas</a></li>
+        <li><a href="#menu">Bebidas</a></li>
+        <li><a href="#menu">Menú del día</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-head">Visítanos</div>
+      <ul class="ft-links">
+        <li><a href="#about">Nuestra historia</a></li>
+        <li><a href="#events">Música en vivo</a></li>
+        <li><a href="#events">Próximos eventos</a></li>
+        <li><a href="#location">Cómo llegar</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-head">Contacto</div>
+      <ul class="ft-links">
+        <li><a href="tel:+34657373736">+34 657 373 736</a></li>
+        <li><a href="mailto:hola@conciertocafeteria.es">Escribirnos</a></li>
+        <li><a href="#">Reservas online</a></li>
+        <li><a href="#">Eventos privados</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="ft-copy">© 2025 Concierto Cafeteria · Playa Flamenca, Alicante</p>
+    <p class="ft-copy"><a href="#">Aviso legal</a> · <a href="#">Privacidad</a></p>
+  </div>
+</footer>
+
+<!-- ─── WHATSAPP FLOATING BUTTON ─── -->
+<a href="https://wa.me/34657373736?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20mesa%20en%20Concierto%20Cafeteria." target="_blank" rel="noopener" class="wa-float" aria-label="Contactar por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<script>
+  /* Nav scroll */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+
+  /* Mobile menu */
+  const mob   = document.getElementById('nav-mob');
+  const links = document.getElementById('nav-links');
+  mob.addEventListener('click', () => {
+    const open = mob.classList.toggle('open');
+    links.classList.toggle('open');
+    mob.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mob.classList.remove('open');
+    links.classList.remove('open');
+    mob.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }));
+
+  /* Scroll animations */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  /* Menu tabs */
+  function switchTab(btn, id) {
+    document.querySelectorAll('.m-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    ['t-desayuno','t-comidas','t-bebidas'].forEach(t => {
+      const el = document.getElementById(t);
+      if (el) el.style.display = t === id ? 'grid' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
