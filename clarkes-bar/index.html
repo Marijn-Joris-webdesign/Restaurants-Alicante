@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clarke's Bar — Irish Pub & Winebar · Playa Flamenca, Alicante</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <noscript><style>.fade-up{opacity:1!important;transform:none!important;}</style></noscript>
+  <style>
+    :root {
+      --black:     #060402;
+      --dark:      #0D0906;
+      --wood:      #1A0D04;
+      --wood-md:   #2C1808;
+      --wood-lt:   #4A2810;
+      --cream:     #F5EDD8;
+      --parchment: #E8DCC0;
+      --gold:      #C9A227;
+      --gold-dk:   #A8861C;
+      --gold-lt:   #DDB840;
+      --amber:     #C87D0A;
+      --green:     #1B3828;
+      --green-md:  #254D36;
+      --green-lt:  #2E6644;
+      --oxblood:   #6B1419;
+      --slate:     #3D4F6B;
+      --grey:      #7A756F;
+      --charcoal:  #1E1A16;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark); color: var(--cream); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+
+    body::after {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    /* ORNAMENT DIVIDER */
+    .orn { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.5rem; }
+    .orn-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, currentColor, transparent); opacity: 0.35; }
+    .orn-diamond { width: 6px; height: 6px; background: currentColor; transform: rotate(45deg); flex-shrink: 0; opacity: 0.7; }
+    .orn.gold { color: var(--gold); }
+    .orn.dk   { color: var(--gold-dk); }
+    .orn.grn  { color: var(--green-lt); }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      padding: 1rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.45s ease, box-shadow 0.45s ease, padding 0.35s ease;
+    }
+    nav.scrolled {
+      background: rgba(6,4,2,0.97); backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 rgba(201,162,39,0.15), 0 8px 32px rgba(0,0,0,0.6);
+      padding: 0.75rem 2.5rem;
+    }
+    .nav-logo img {
+      height: 62px; width: auto;
+      filter:
+        drop-shadow(0 0 28px rgba(201,162,39,0.65))
+        drop-shadow(0 0 10px rgba(201,162,39,0.4))
+        drop-shadow(0 3px 14px rgba(0,0,0,0.95));
+      transition: height 0.35s ease, filter 0.4s ease;
+    }
+    nav.scrolled .nav-logo img { height: 52px; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.67rem; font-weight: 600; letter-spacing: 0.17em; text-transform: uppercase; color: rgba(245,237,216,0.55); text-decoration: none; transition: color 0.2s ease; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: var(--dark);
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.7rem 1.55rem; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      box-shadow: 0 2px 16px rgba(201,162,39,0.38);
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
+    .nav-cta:hover { background: var(--gold-lt); transform: translateY(-1px); box-shadow: 0 4px 24px rgba(201,162,39,0.55); }
+    .nav-cta:active { transform: none; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.69rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 1rem 2.2rem; border: none; cursor: pointer; text-decoration: none;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+    .btn:active { transform: none !important; }
+    .btn-gold { background: var(--gold); color: var(--dark); box-shadow: 0 4px 20px rgba(201,162,39,0.32); }
+    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,162,39,0.48); }
+    .btn-outline { background: transparent; color: var(--cream); border: 1.5px solid rgba(245,237,216,0.22); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .btn-green { background: var(--green-md); color: var(--cream); border: 1px solid rgba(201,162,39,0.18); }
+    .btn-green:hover { background: var(--green-lt); transform: translateY(-2px); }
+    .btn-google { background: rgba(245,237,216,0.05); color: var(--cream); border: 1.5px solid rgba(245,237,216,0.12); display: inline-flex; align-items: center; gap: 0.75rem; }
+    .btn-google:hover { border-color: rgba(201,162,39,0.4); color: var(--gold); transform: translateY(-2px); }
+
+    /* EYEBROW */
+    .eyebrow { font-size: 0.61rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; color: var(--gold); }
+    .eyebrow span { display: block; width: 1.5rem; height: 1px; background: currentColor; }
+    .eyebrow.dk  { color: var(--gold-dk); }
+    .eyebrow.grn { color: var(--green-lt); }
+    .sec-title { font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; color: var(--cream); }
+    .sec-title.dark { color: var(--wood); }
+
+    /* HERO */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1543007631-283050bb3e8c?auto=format&fit=crop&w=1800&q=92') center/cover no-repeat;
+    }
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(to right, rgba(6,4,2,0.97) 36%, rgba(6,4,2,0.62) 65%, rgba(6,4,2,0.2) 100%),
+        linear-gradient(to top, rgba(6,4,2,0.92) 0%, transparent 38%),
+        radial-gradient(ellipse 55% 75% at 12% 52%, rgba(200,125,10,0.09) 0%, transparent 58%);
+    }
+    .hero-inner {
+      position: relative; z-index: 10;
+      max-width: 1240px; margin: 0 auto; padding: 0 2.5rem; padding-top: 7rem; width: 100%;
+    }
+    .hero-open {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: rgba(245,237,216,0.06); border: 1px solid rgba(201,162,39,0.22);
+      padding: 0.48rem 1rem; font-size: 0.63rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(245,237,216,0.6); margin-bottom: 1.6rem;
+      opacity: 0; animation: fadeUp 0.7s ease 0.08s forwards;
+    }
+    .open-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 2px rgba(34,197,94,0.25); animation: pulse 2s infinite; flex-shrink: 0; }
+    .hero-ornament { opacity: 0; animation: fadeUp 0.7s ease 0.18s forwards; margin-bottom: 1.4rem; }
+    .hero-h1 {
+      font-size: clamp(4rem, 9.5vw, 8.5rem); font-weight: 700; line-height: 0.93;
+      letter-spacing: -0.03em; color: var(--cream); margin-bottom: 0.65rem;
+      opacity: 0; animation: fadeUp 0.9s ease 0.32s forwards;
+    }
+    .hero-h1 em { font-style: italic; color: var(--gold); display: block; }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+      font-style: italic; color: rgba(245,237,216,0.48); line-height: 1.5;
+      opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards; margin-bottom: 1.75rem;
+    }
+    .hero-body {
+      font-size: 0.9rem; font-weight: 300; line-height: 1.9; color: rgba(245,237,216,0.48);
+      max-width: 420px; margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp 0.8s ease 0.64s forwards;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s ease 0.78s forwards; }
+    .hero-feats {
+      display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 3.5rem; padding-top: 2rem;
+      border-top: 1px solid rgba(201,162,39,0.12);
+      opacity: 0; animation: fadeUp 0.8s ease 0.96s forwards;
+    }
+    .hfeat { display: flex; align-items: center; gap: 0.5rem; font-size: 0.63rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,237,216,0.35); }
+    .hfeat svg { color: var(--gold); flex-shrink: 0; }
+
+    /* EST BADGE */
+    .est-badge {
+      display: inline-flex; flex-direction: column; align-items: center;
+      border: 1px solid rgba(201,162,39,0.4); padding: 0.5rem 1.2rem;
+      background: rgba(201,162,39,0.07); margin-bottom: 1.8rem;
+      opacity: 0; animation: fadeUp 0.7s ease 0s forwards;
+    }
+    .est-badge-top  { font-size: 0.5rem; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(201,162,39,0.65); }
+    .est-badge-year { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--gold); line-height: 1.1; }
+    .est-badge-sub  { font-size: 0.48rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(201,162,39,0.45); }
+
+    /* MARQUEE */
+    .marquee-strip {
+      background: var(--green); padding: 0.88rem 0; overflow: hidden; white-space: nowrap;
+      border-top: 1px solid rgba(201,162,39,0.2); border-bottom: 1px solid rgba(201,162,39,0.2);
+    }
+    .marquee-track { display: inline-flex; animation: marquee 32s linear infinite; }
+    .marquee-item { font-size: 0.63rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(245,237,216,0.62); padding: 0 2.5rem; display: inline-flex; align-items: center; gap: 1rem; }
+    .marquee-dot { width: 4px; height: 4px; background: var(--gold); opacity: 0.65; transform: rotate(45deg); flex-shrink: 0; }
+
+    /* ABOUT */
+    .about-sec { padding: 9rem 2.5rem; background: var(--cream); }
+    .about-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: center; }
+    .about-imgs { position: relative; }
+    .about-main { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; filter: sepia(0.12) contrast(1.05); }
+    .about-badge {
+      position: absolute; bottom: -2rem; right: -1.5rem;
+      background: var(--green); color: var(--cream);
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.98rem; font-weight: 600;
+      padding: 0.9rem 1.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.28); white-space: nowrap;
+      border: 1px solid rgba(201,162,39,0.2);
+    }
+    .about-badge strong { color: var(--gold-lt); font-style: normal; }
+    .about-stamp {
+      position: absolute; top: 1.5rem; left: -1.5rem; width: 82px; height: 82px;
+      border-radius: 50%; background: var(--gold); color: var(--dark);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 4px 22px rgba(201,162,39,0.42); border: 2px solid rgba(201,162,39,0.6);
+    }
+    .about-stamp-est { font-size: 0.46rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; }
+    .about-stamp-yr  { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1; }
+    .about-body { font-size: 0.93rem; font-weight: 300; line-height: 1.9; color: #4A3A24; margin: 1.5rem 0; }
+    .about-feats { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-top: 2.5rem; }
+    .afeat { display: flex; flex-direction: column; gap: 0.4rem; }
+    .afeat svg { width: 26px; height: 26px; color: var(--green-md); }
+    .afeat-lbl { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #4A3A24; }
+
+    /* MENU */
+    .menu-sec { padding: 9rem 2.5rem; background: var(--wood); position: relative; overflow: hidden; }
+    .menu-sec::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 65% 55% at 92% 12%, rgba(201,162,39,0.07) 0%, transparent 55%),
+                  radial-gradient(ellipse 50% 70% at 4% 88%, rgba(27,56,40,0.12) 0%, transparent 55%);
+    }
+    .menu-top { max-width: 1240px; margin: 0 auto 4.5rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem; }
+    .menu-tabs { display: flex; border-bottom: 1px solid rgba(245,237,216,0.08); }
+    .m-tab {
+      font-size: 0.67rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(245,237,216,0.28); padding: 0.8rem 1.4rem;
+      border: none; border-bottom: 2px solid transparent; margin-bottom: -1px;
+      background: none; cursor: pointer; transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .m-tab.active, .m-tab:hover { color: var(--cream); border-bottom-color: var(--gold); }
+    .menu-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: rgba(245,237,216,0.04); }
+    .menu-card { background: rgba(6,4,2,0.55); padding: 2.5rem 2.25rem; position: relative; cursor: pointer; transition: background 0.3s ease; }
+    .menu-card:hover { background: rgba(201,162,39,0.06); }
+    .card-img { width: 100%; aspect-ratio: 3/2; overflow: hidden; margin-bottom: 1.5rem; }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.78) brightness(0.9); transition: filter 0.35s ease, transform 0.55s cubic-bezier(.25,.46,.45,.94); }
+    .menu-card:hover .card-img img { filter: saturate(1.05) brightness(1); transform: scale(1.04); }
+    .card-tag   { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .card-name  { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--cream); line-height: 1.3; margin-bottom: 0.6rem; }
+    .card-desc  { font-size: 0.8rem; font-weight: 300; line-height: 1.75; color: rgba(245,237,216,0.37); }
+    .card-price { position: absolute; top: 2.25rem; right: 2.25rem; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--gold); font-style: italic; }
+    .menu-cta   { text-align: center; margin-top: 3.5rem; }
+
+    /* GALLERY */
+    .gallery-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 3px; background: var(--black); }
+    .gcell { position: relative; aspect-ratio: 3/4; overflow: hidden; }
+    .gcell img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.68) brightness(0.84) sepia(0.1); transition: transform 0.6s cubic-bezier(.25,.46,.45,.94), filter 0.4s ease; }
+    .gcell:hover img { transform: scale(1.07); filter: saturate(0.92) brightness(1.02) sepia(0); }
+    .gcell::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(6,4,2,0.72) 0%, transparent 50%); pointer-events: none; }
+
+    /* QUOTE */
+    .quote-strip { background: var(--green); padding: 6rem 2.5rem; text-align: center; position: relative; overflow: hidden; }
+    .quote-strip::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 120% at 50% 120%, rgba(201,162,39,0.1) 0%, transparent 55%); pointer-events: none; }
+    .tq-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.75rem, 4vw, 3.1rem); font-style: italic; font-weight: 400; line-height: 1.4; color: var(--cream); max-width: 860px; margin: 1.5rem auto 0; letter-spacing: -0.01em; }
+    .tq-quote strong { font-style: normal; font-weight: 600; color: var(--gold); }
+    .tq-attr  { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,237,216,0.28); margin-top: 1.75rem; }
+    .tq-pills { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem; }
+    .pill { font-size: 0.57rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid rgba(201,162,39,0.2); color: rgba(245,237,216,0.48); background: rgba(201,162,39,0.05); }
+
+    /* EVENTS */
+    .events-sec { padding: 9rem 2.5rem; background: var(--dark); position: relative; overflow: hidden; }
+    .events-sec::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 55% at 18% 45%, rgba(201,162,39,0.07) 0%, transparent 55%), radial-gradient(ellipse 50% 65% at 82% 65%, rgba(27,56,40,0.1) 0%, transparent 55%); }
+    .events-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: center; position: relative; }
+    .events-body { font-size: 0.93rem; font-weight: 300; line-height: 1.88; color: rgba(245,237,216,0.44); margin: 1.5rem 0 2.5rem; }
+    .event-list { display: flex; flex-direction: column; gap: 0.7rem; }
+    .ev-item { display: flex; align-items: center; gap: 1.5rem; padding: 1.1rem 1.25rem; cursor: pointer; border: 1px solid rgba(201,162,39,0.1); background: rgba(201,162,39,0.03); transition: border-color 0.2s ease, background 0.2s ease; }
+    .ev-item:hover { border-color: rgba(201,162,39,0.3); background: rgba(201,162,39,0.07); }
+    .ev-date { text-align: center; min-width: 3rem; }
+    .ev-day  { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold); line-height: 1; }
+    .ev-mon  { font-size: 0.5rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,162,39,0.42); margin-top: 0.1rem; }
+    .ev-sep  { width: 1px; height: 2.5rem; background: rgba(245,237,216,0.07); flex-shrink: 0; }
+    .ev-info { flex: 1; }
+    .ev-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--cream); }
+    .ev-meta  { font-size: 0.67rem; font-weight: 400; letter-spacing: 0.05em; color: rgba(245,237,216,0.27); margin-top: 0.17rem; }
+    .ev-arr   { color: rgba(201,162,39,0.2); transition: color 0.2s ease; flex-shrink: 0; }
+    .ev-item:hover .ev-arr { color: var(--gold); }
+    .events-photo { position: relative; }
+    .events-photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+    .events-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(6,4,2,0.9) 0%, transparent 52%); pointer-events: none; }
+    .events-caption { position: absolute; bottom: 1.75rem; left: 1.75rem; right: 1.75rem; }
+    .events-caption .etag { font-size: 0.59rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+    .events-caption .ettl { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: white; }
+    .events-caption .esub { font-size: 0.77rem; color: rgba(245,237,216,0.4); margin-top: 0.25rem; }
+
+    /* LOCATION */
+    .loc-sec  { padding: 9rem 2.5rem; background: var(--parchment); }
+    .loc-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 7rem; align-items: start; }
+    .loc-map-wrap { position: relative; }
+    .loc-map  { width: 100%; aspect-ratio: 4/3; overflow: hidden; display: block; }
+    .loc-map iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .loc-pin  { position: absolute; bottom: 1.25rem; left: 1.25rem; background: var(--green); color: var(--cream); font-size: 0.59rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.4rem; }
+    .loc-info { padding-top: 0.5rem; }
+    .contact-list { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 2.25rem; }
+    .clnk { display: flex; align-items: flex-start; gap: 1rem; font-size: 0.9rem; font-weight: 300; color: #3A2A14; text-decoration: none; transition: color 0.2s ease; line-height: 1.5; }
+    .clnk:hover { color: var(--green-md); }
+    .clnk svg { width: 17px; height: 17px; color: var(--green-md); flex-shrink: 0; margin-top: 2px; }
+    .hours-tbl  { margin-top: 2.75rem; }
+    .hours-head { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--wood); margin-bottom: 1rem; }
+    .hrow { display: flex; justify-content: space-between; padding: 0.65rem 0; border-bottom: 1px solid rgba(58,26,8,0.1); font-size: 0.84rem; }
+    .hrow:last-child { border-bottom: none; }
+    .hday  { font-weight: 500; color: #4A3A1E; }
+    .htime { font-weight: 400; color: #8A7A5A; }
+    .htime.open { color: var(--green-md); font-weight: 600; }
+
+    /* REVIEWS */
+    .reviews-sec   { padding: 9rem 2.5rem; background: var(--charcoal); }
+    .reviews-inner { max-width: 1240px; margin: 0 auto; }
+    .reviews-head  { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 4rem; }
+    .reviews-head .sec-title { margin-bottom: 2rem; }
+    .g-badge { display: inline-flex; align-items: center; gap: 2rem; flex-wrap: wrap; justify-content: center; background: rgba(245,237,216,0.04); padding: 1.5rem 2.5rem; border: 1px solid rgba(201,162,39,0.14); }
+    .g-logo  { display: flex; align-items: center; gap: 2px; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+    .g-G{color:#4285F4;} .g-o1{color:#EA4335;} .g-o2{color:#FBBC05;} .g-g2{color:#4285F4;} .g-l{color:#34A853;} .g-e{color:#EA4335;}
+    .g-divider    { width: 1px; height: 2.25rem; background: rgba(245,237,216,0.1); }
+    .g-score-num  { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--cream); line-height: 1; }
+    .g-score-block { display: flex; flex-direction: column; align-items: flex-start; gap: 0.2rem; }
+    .g-stars-row  { display: flex; gap: 2px; }
+    .g-star  { color: #FBBC04; font-size: 1rem; }
+    .g-count { font-size: 0.67rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,237,216,0.28); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 3.5rem; }
+    .rev-card { background: rgba(245,237,216,0.04); padding: 2rem; border: 1px solid rgba(201,162,39,0.09); transition: transform 0.3s cubic-bezier(.25,.46,.45,.94), box-shadow 0.3s ease, border-color 0.3s ease; }
+    .rev-card:hover { transform: translateY(-5px); box-shadow: 0 12px 48px rgba(0,0,0,0.4); border-color: rgba(201,162,39,0.22); }
+    .rev-header { display: flex; align-items: center; gap: 0.875rem; margin-bottom: 1rem; }
+    .rev-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 700; color: var(--dark); flex-shrink: 0; }
+    .rev-meta  { flex: 1; min-width: 0; }
+    .rev-name  { font-weight: 600; font-size: 0.88rem; color: var(--cream); }
+    .rev-date  { font-size: 0.67rem; color: rgba(245,237,216,0.27); margin-top: 0.12rem; }
+    .rev-stars { display: flex; gap: 2px; margin-bottom: 0.875rem; }
+    .rev-star  { color: #FBBC04; font-size: 0.88rem; }
+    .rev-text  { font-size: 0.84rem; font-weight: 300; line-height: 1.8; color: rgba(245,237,216,0.5); }
+    .rev-footer { margin-top: 1.25rem; display: flex; justify-content: flex-end; }
+    .rev-g-mark { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; display: flex; align-items: center; gap: 4px; }
+    .rev-g-G    { color: #4285F4; font-size: 0.9rem; font-weight: 800; }
+    .rev-g-rest { color: rgba(245,237,216,0.27); }
+    .reviews-cta { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .reviews-cta-note { font-size: 0.75rem; color: rgba(245,237,216,0.27); }
+
+    /* CTA BAND */
+    .cta-band { padding: 9rem 2.5rem; background: var(--green); text-align: center; position: relative; overflow: hidden; }
+    .cta-band::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 70% 90% at 50% 110%, rgba(201,162,39,0.15) 0%, transparent 55%); }
+    .cta-pre   { font-size: 0.69rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(201,162,39,0.75); margin-bottom: 1.5rem; position: relative; }
+    .cta-title { font-size: clamp(3rem, 7.5vw, 7rem); font-weight: 700; letter-spacing: -0.03em; line-height: 0.97; color: var(--cream); margin-bottom: 0.25rem; position: relative; }
+    .cta-title em { font-style: italic; color: var(--gold); }
+    .cta-payoff { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 1.8vw, 1.4rem); font-style: italic; color: rgba(245,237,216,0.38); margin: 1.25rem 0 3rem; position: relative; }
+    .cta-payoff strong { color: rgba(245,237,216,0.72); font-style: normal; font-weight: 600; }
+    .cta-btns  { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    /* FOOTER */
+    footer { background: var(--black); padding: 4.5rem 2.5rem 2rem; }
+    .footer-top { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 3.5rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(245,237,216,0.06); }
+    .ft-logo img { height: 52px; filter: drop-shadow(0 0 22px rgba(201,162,39,0.55)) drop-shadow(0 2px 10px rgba(0,0,0,0.9)); }
+    .ft-tagline  { font-size: 0.82rem; font-weight: 300; line-height: 1.8; color: rgba(245,237,216,0.27); margin-top: 1rem; }
+    .ft-socials  { display: flex; gap: 0.7rem; margin-top: 1.75rem; }
+    .soc { width: 38px; height: 38px; border: 1px solid rgba(245,237,216,0.08); display: flex; align-items: center; justify-content: center; color: rgba(245,237,216,0.24); text-decoration: none; transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease; }
+    .soc:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,162,39,0.06); }
+    .ft-head  { font-size: 0.61rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.3rem; }
+    .ft-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .ft-links a { font-size: 0.84rem; font-weight: 300; color: rgba(245,237,216,0.27); text-decoration: none; transition: color 0.2s ease; }
+    .ft-links a:hover { color: var(--cream); }
+    .footer-bottom { max-width: 1240px; margin: 2rem auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .ft-copy { font-size: 0.69rem; color: rgba(245,237,216,0.13); }
+
+    /* SCROLL FADE */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .fade-up.vis { opacity: 1; transform: translateY(0); }
+    .fade-up.d1 { transition-delay: 0.1s; }
+    .fade-up.d2 { transition-delay: 0.22s; }
+    .fade-up.d3 { transition-delay: 0.34s; }
+    .fade-up.d4 { transition-delay: 0.46s; }
+
+    @keyframes fadeUp  { from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);} }
+    @keyframes marquee { from{transform:translateX(0);}to{transform:translateX(-50%);} }
+    @keyframes pulse   { 0%,100%{box-shadow:0 0 0 2px rgba(34,197,94,.25);}50%{box-shadow:0 0 0 5px rgba(34,197,94,.1);} }
+
+    /* LANG TOGGLE */
+    .lang-toggle { display: flex; align-items: center; gap: 0; margin-right: 1rem; }
+    .lang-btn { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; background: none; border: none; cursor: pointer; padding: 0.35rem 0.5rem; color: rgba(245,237,216,0.3); transition: color 0.2s ease; font-family: 'Montserrat', sans-serif; }
+    .lang-btn.active { color: var(--gold); }
+    .lang-btn:hover:not(.active) { color: rgba(245,237,216,0.75); }
+    .lang-sep { color: rgba(245,237,216,0.12); font-size: 0.65rem; user-select: none; }
+
+    /* MOBILE NAV */
+    .nav-mob-tel { display:none; color:var(--cream); line-height:0; padding:.4rem; }
+    .nav-mob { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; cursor:pointer; padding:6px 2px; z-index:200; margin-left:.5rem; }
+    .nav-mob span { display:block; width:22px; height:2px; background:var(--cream); border-radius:2px; transition:transform .3s ease,opacity .2s ease; }
+    .nav-mob.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .nav-mob.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+    .nav-mob.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+    /* WHATSAPP */
+    .wa-float { position:fixed; bottom:2rem; right:2rem; z-index:600; width:56px; height:56px; border-radius:50%; background:#25D366; color:white; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 24px rgba(37,211,102,.45),0 2px 8px rgba(0,0,0,.14); text-decoration:none; transition:transform 0.3s cubic-bezier(.34,1.56,.64,1),box-shadow 0.2s ease; }
+    .wa-float:hover{transform:scale(1.13);box-shadow:0 8px 36px rgba(37,211,102,.55);}
+    .wa-float:active{transform:scale(1.04);}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .nav-cta{display:none;}
+      .nav-mob,.nav-mob-tel{display:flex;}
+      .nav-links{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(6,4,2,.98);display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:0;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);z-index:150;}
+      .nav-links.open{transform:translateX(0);}
+      .nav-links li{width:100%;text-align:center;border-bottom:1px solid rgba(201,162,39,.08);}
+      .nav-links li:first-child{border-top:1px solid rgba(201,162,39,.08);}
+      .nav-links li a{display:block;padding:1.3rem 2rem;font-size:1.1rem;font-weight:500;letter-spacing:.04em;color:var(--cream);}
+      .hero{min-height:100svh;} .hero-inner{padding:5.5rem 1.5rem 0;}
+      .hero-h1{font-size:clamp(3rem,11vw,5.2rem);}
+      .hero-btns{flex-direction:column;gap:.75rem;} .hero-btns .btn{width:100%;justify-content:center;}
+      .hero-feats{gap:1.25rem;margin-bottom:3rem;}
+      .about-sec,.events-sec,.loc-sec,.reviews-sec{padding:5rem 1.5rem;}
+      .menu-sec{padding:5rem 1.5rem;} .reviews-grid{grid-template-columns:1fr;}
+      .about-grid,.events-grid,.loc-grid{grid-template-columns:1fr;gap:3.5rem;}
+      .about-stamp{left:0;} .about-badge{right:0;}
+      .menu-grid{grid-template-columns:1fr;} .gallery-strip{grid-template-columns:repeat(2,1fr);} .gcell{aspect-ratio:1;}
+      .menu-top{flex-direction:column;align-items:flex-start;gap:1.5rem;}
+      .cta-band{padding:5.5rem 1.5rem;} .cta-btns{flex-direction:column;align-items:stretch;max-width:320px;margin:0 auto;} .cta-btns .btn{justify-content:center;}
+      .footer-top{grid-template-columns:1fr;gap:2rem;}
+      .quote-strip{padding:4rem 1.5rem;}
+    }
+    @media(max-width:540px){
+      .hero-h1{font-size:clamp(2.8rem,13vw,4.5rem);} .sec-title{font-size:clamp(1.9rem,9vw,3rem);}
+      .about-sec,.menu-sec,.events-sec,.loc-sec{padding:4rem 1.25rem 5rem;}
+      .menu-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;} .m-tab{white-space:nowrap;padding:.8rem 1rem;}
+      .wa-float{width:50px;height:50px;bottom:1.25rem;right:1.25rem;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">
+    <a href="#"><img src="brand_assets/clarkes%20logo%20transparant.png" alt="Clarke's Bar"></a>
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about" data-i18n="nav-story">Our Story</a></li>
+    <li><a href="#menu" data-i18n="nav-drinks">Drinks</a></li>
+    <li><a href="#events" data-i18n="nav-events">Events</a></li>
+    <li><a href="#location" data-i18n="nav-find">Find Us</a></li>
+    <li><a href="#reviews" data-i18n="nav-reviews">Reviews</a></li>
+  </ul>
+  <div class="lang-toggle">
+    <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+  </div>
+  <a href="tel:+34965000000" class="nav-cta btn" data-i18n="nav-book">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.007 1.17 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Book a Table
+  </a>
+  <a href="tel:+34965000000" class="nav-mob-tel" aria-label="Call us">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.007 1.17 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <button id="nav-mob" class="nav-mob" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="est-badge">
+      <span class="est-badge-top" data-i18n="hero-est-top">Established</span>
+      <span class="est-badge-year">2006</span>
+      <span class="est-badge-sub" data-i18n="hero-est-sub">Family Irish Pub · Playa Flamenca</span>
+    </div>
+    <div class="hero-open">
+      <span class="open-dot"></span>
+      <span data-i18n="hero-open">Open Today · Mon–Sat 12:00–02:00 · Sun 12:00–00:00</span>
+    </div>
+    <div class="hero-ornament">
+      <div class="orn gold"><div class="orn-line"></div><div class="orn-diamond"></div><div class="orn-line"></div></div>
+    </div>
+    <h1 class="hero-h1">Clarke's<em>Bar.</em></h1>
+    <p class="hero-sub" data-i18n="hero-sub">Irish Pub · Winebar & Spirits · Playa Flamenca, Alicante</p>
+    <p class="hero-body" data-i18n="hero-body">A family-run Irish pub since 2006 — where the pints are perfectly kept, the quiz nights are legendary, and the craic is always good. Your local, every single day.</p>
+    <div class="hero-btns">
+      <a href="tel:+34965000000" class="btn btn-gold" data-i18n="nav-book">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.007 1.17 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Book a Table
+      </a>
+      <a href="#menu" class="btn btn-outline" data-i18n="hero-btn-menu">View Drinks Menu</a>
+    </div>
+    <div class="hero-feats">
+      <div class="hfeat">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <span data-i18n="hero-feat-1">Live Music</span>
+      </div>
+      <div class="hfeat">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        <span data-i18n="hero-feat-2">Thursday Quiz</span>
+      </div>
+      <div class="hfeat">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        <span data-i18n="hero-feat-3">Sun Terrace</span>
+      </div>
+      <div class="hfeat">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        <span data-i18n="hero-feat-4">Community Hub</span>
+      </div>
+      <div class="hfeat">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        <span data-i18n="hero-feat-5">Family Run</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Irish Pub · Est. 2006<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Live Music Fridays<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Thursday Quiz Night<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Sun Terrace · Playa Flamenca<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Fine Wines & Spirits<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Cold Draught Beers<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Sports on the Big Screen<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Happy Hour Daily 4–6pm<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Irish Pub · Est. 2006<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Live Music Fridays<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Thursday Quiz Night<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Sun Terrace · Playa Flamenca<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Fine Wines & Spirits<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Cold Draught Beers<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Sports on the Big Screen<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Happy Hour Daily 4–6pm<span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-sec" id="about">
+  <div class="about-grid">
+    <div class="about-imgs fade-up">
+      <img src="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?auto=format&fit=crop&w=1000&q=92" alt="Clarke's Bar interior" class="about-main">
+      <div class="about-stamp">
+        <span class="about-stamp-est">Est.</span>
+        <span class="about-stamp-yr">2006</span>
+      </div>
+      <div class="about-badge" data-i18n-html="ab-badge">A family pub · <strong>since 2006</strong></div>
+    </div>
+    <div>
+      <div class="eyebrow dk fade-up"><span></span><span data-i18n="ab-eyebrow">Our Story</span></div>
+      <h2 class="sec-title dark fade-up d1" data-i18n-html="ab-h2">A real Irish pub,<br><em style="color:var(--green-md);font-style:italic;">right here in Alicante.</em></h2>
+      <div class="orn dk fade-up d2"><div class="orn-line"></div><div class="orn-diamond"></div><div class="orn-line"></div></div>
+      <p class="about-body fade-up d2" data-i18n="ab-body1">Clarke's Bar was founded in 2006 as a family-run Irish pub in the heart of Playa Flamenca. What started as a neighbourhood watering hole has grown into the beating social heart of the community — a place where regulars become friends, where every pour is made with care, and where the craic is always good.</p>
+      <p class="about-body fade-up d3" style="margin-top:-0.5rem;" data-i18n="ab-body2">Whether you're here for a perfectly kept pint, a glass of Rioja on the terrace, or a quiet Tuesday that somehow turns into a Thursday — you're always welcome at Clarke's.</p>
+      <div class="about-feats fade-up d4">
+        <div class="afeat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3m8 0h3a2 2 0 002-2v-3"/></svg>
+          <span class="afeat-lbl" data-i18n="ab-feat-1">Wine & Spirits</span>
+        </div>
+        <div class="afeat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          <span class="afeat-lbl" data-i18n="ab-feat-2">Live Music</span>
+        </div>
+        <div class="afeat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <span class="afeat-lbl" data-i18n="ab-feat-3">Quiz Nights</span>
+        </div>
+        <div class="afeat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="afeat-lbl" data-i18n="ab-feat-4">Terrace</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DRINKS MENU -->
+<section class="menu-sec" id="menu">
+  <div class="menu-top">
+    <div class="fade-up">
+      <div class="eyebrow"><span></span><span data-i18n="mn-eyebrow">Our Selection</span></div>
+      <h2 class="sec-title" data-i18n-html="mn-h2">Expertly poured,<br><span style="color:var(--gold)">every single time.</span></h2>
+    </div>
+    <div class="menu-tabs fade-up d2">
+      <button class="m-tab active" onclick="switchTab(this,'t-wines')" data-i18n="mn-tab-1">Wines</button>
+      <button class="m-tab" onclick="switchTab(this,'t-spirits')" data-i18n="mn-tab-2">Spirits & Cocktails</button>
+      <button class="m-tab" onclick="switchTab(this,'t-beer')" data-i18n="mn-tab-3">Draught & Beer</button>
+    </div>
+  </div>
+
+  <div class="menu-grid" id="t-wines">
+    <div class="menu-card fade-up">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=900&q=92" alt="Red wine"></div>
+      <div class="card-price">€5.50</div>
+      <div class="card-tag" data-i18n="wn1-tag">House Red</div>
+      <div class="card-name" data-i18n="wn1-name">Tempranillo Rioja Crianza</div>
+      <p class="card-desc" data-i18n="wn1-desc">Full-bodied with cherry, vanilla and oak. A Spanish classic from the acclaimed Rioja region.</p>
+    </div>
+    <div class="menu-card fade-up d1">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=92" alt="White wine"></div>
+      <div class="card-price">€5.50</div>
+      <div class="card-tag" data-i18n="wn2-tag">Sommelier's Choice</div>
+      <div class="card-name" data-i18n="wn2-name">Albariño Rías Baixas</div>
+      <p class="card-desc" data-i18n="wn2-desc">Crisp, aromatic white with citrus and peach. The perfect match for a warm Alicante evening on the terrace.</p>
+    </div>
+    <div class="menu-card fade-up d2">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1578911373434-0cb395d2cbfb?auto=format&fit=crop&w=900&q=92" alt="Cava"></div>
+      <div class="card-price">€8.50</div>
+      <div class="card-tag" data-i18n="wn3-tag">Celebration</div>
+      <div class="card-name" data-i18n="wn3-name">Cava Brut Reserva</div>
+      <p class="card-desc" data-i18n="wn3-desc">Fine bubbles, green apple and brioche notes. Spanish sparkling at its most elegant.</p>
+    </div>
+  </div>
+
+  <div class="menu-grid" id="t-spirits" style="display:none">
+    <div class="menu-card fade-up">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=92" alt="Gin and tonic"></div>
+      <div class="card-price">€7.50</div>
+      <div class="card-tag" data-i18n="sp1-tag">Signature Serve</div>
+      <div class="card-name" data-i18n="sp1-name">Clarke's G&T</div>
+      <p class="card-desc" data-i18n="sp1-desc">Premium gin, hand-picked botanicals, Fever-Tree tonic. Served with fresh rosemary and pink grapefruit.</p>
+    </div>
+    <div class="menu-card fade-up d1">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?auto=format&fit=crop&w=900&q=92" alt="Whiskey"></div>
+      <div class="card-price">€6.00</div>
+      <div class="card-tag" data-i18n="sp2-tag">Irish Spirits</div>
+      <div class="card-name" data-i18n="sp2-name">Single Malt Whiskey</div>
+      <p class="card-desc" data-i18n="sp2-desc">A rotating selection of Irish and Scottish single malts. Ask our staff for today's featured pour.</p>
+    </div>
+    <div class="menu-card fade-up d2">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=900&q=92" alt="Cocktail"></div>
+      <div class="card-price">€9.00</div>
+      <div class="card-tag" data-i18n="sp3-tag">Cocktail Bar</div>
+      <div class="card-name" data-i18n="sp3-name">Aperol Spritz</div>
+      <p class="card-desc" data-i18n="sp3-desc">Aperol, Prosecco, soda and orange. The terrace-perfect Italian aperitivo.</p>
+    </div>
+  </div>
+
+  <div class="menu-grid" id="t-beer" style="display:none">
+    <div class="menu-card fade-up">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=900&q=92" alt="Draught beer"></div>
+      <div class="card-price">€3.00</div>
+      <div class="card-tag" data-i18n="br1-tag">On Draught</div>
+      <div class="card-name" data-i18n="br1-name">Estrella Damm</div>
+      <p class="card-desc" data-i18n="br1-desc">Spain's finest lager on draught. Cold, crisp and refreshing — served in a chilled glass.</p>
+    </div>
+    <div class="menu-card fade-up d1">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=900&q=92" alt="Craft beer"></div>
+      <div class="card-price">€4.50</div>
+      <div class="card-tag" data-i18n="br2-tag">Craft Tap</div>
+      <div class="card-name" data-i18n="br2-name">Rotating Craft IPA</div>
+      <p class="card-desc" data-i18n="br2-desc">Our rotating craft tap features the best local and international IPAs. Ask the bar what's pouring today.</p>
+    </div>
+    <div class="menu-card fade-up d2">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=92" alt="Soft drinks"></div>
+      <div class="card-price">€2.50</div>
+      <div class="card-tag" data-i18n="br3-tag">Non-Alcoholic</div>
+      <div class="card-name" data-i18n="br3-name">Soft Drinks & Juices</div>
+      <p class="card-desc" data-i18n="br3-desc">Fresh juices, premium tonics, Fever-Tree mixers and soft drinks for the whole family.</p>
+    </div>
+  </div>
+
+  <div class="menu-cta fade-up">
+    <a href="#location" class="btn btn-outline" data-i18n="mn-cta">Full Menu at the Bar</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery-strip">
+  <div class="gcell"><img src="https://images.unsplash.com/photo-1543007631-283050bb3e8c?auto=format&fit=crop&w=900&q=92" alt="Bar interior"></div>
+  <div class="gcell"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=92" alt="Terrace"></div>
+  <div class="gcell"><img src="https://images.unsplash.com/photo-1525268323446-0505b6fe7778?auto=format&fit=crop&w=900&q=92" alt="Wine selection"></div>
+  <div class="gcell"><img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=92" alt="Live music"></div>
+</div>
+
+<!-- QUOTE -->
+<div class="quote-strip">
+  <div class="orn grn fade-up" style="max-width:300px;margin:0 auto 0.5rem;">
+    <div class="orn-line"></div><div class="orn-diamond"></div><div class="orn-line"></div>
+  </div>
+  <div class="tq-quote fade-up d1" data-i18n-html="qt-text">"You come in for <strong>one pint</strong> and stay for the evening. That's not an accident — that's <strong>Clarke's doing its job.</strong>"</div>
+  <div class="tq-attr fade-up d2" data-i18n="qt-attr">— A regular at Clarke's Bar, Playa Flamenca</div>
+  <div class="tq-pills fade-up d3">
+    <span class="pill">Irish Pub</span>
+    <span class="pill">Est. 2006</span>
+    <span class="pill">Winebar</span>
+    <span class="pill">Spirits House</span>
+    <span class="pill">Sun Terrace</span>
+    <span class="pill">Live Music</span>
+    <span class="pill">Quiz Nights</span>
+    <span class="pill">Family Run</span>
+  </div>
+</div>
+
+<!-- EVENTS -->
+<section class="events-sec" id="events">
+  <div class="events-grid">
+    <div>
+      <div class="eyebrow fade-up"><span></span><span data-i18n="ev-eyebrow">What's On</span></div>
+      <h2 class="sec-title fade-up d1" data-i18n-html="ev-h2">There's always a reason<br><em style="color:var(--gold);font-style:italic;">to come back.</em></h2>
+      <p class="events-body fade-up d2" data-i18n="ev-body">From our legendary Thursday Quiz Night to live music on Fridays and weekend sport on the big screen — Clarke's is never quiet for long.</p>
+      <div class="event-list fade-up d3">
+        <div class="ev-item">
+          <div class="ev-date"><div class="ev-day">Thu</div><div class="ev-mon">Weekly</div></div>
+          <div class="ev-sep"></div>
+          <div class="ev-info"><div class="ev-title" data-i18n="ev1-title">Quiz Night</div><div class="ev-meta" data-i18n="ev1-meta">8:00 PM · Teams of up to 6 · Cash Prize</div></div>
+          <svg class="ev-arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="ev-item">
+          <div class="ev-date"><div class="ev-day">Fri</div><div class="ev-mon">Weekly</div></div>
+          <div class="ev-sep"></div>
+          <div class="ev-info"><div class="ev-title" data-i18n="ev2-title">Live Music Night</div><div class="ev-meta" data-i18n="ev2-meta">9:00 PM · Local artists & special guests</div></div>
+          <svg class="ev-arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="ev-item">
+          <div class="ev-date"><div class="ev-day">Sat</div><div class="ev-mon">Weekly</div></div>
+          <div class="ev-sep"></div>
+          <div class="ev-info"><div class="ev-title" data-i18n="ev3-title">Sports on the Big Screen</div><div class="ev-meta" data-i18n="ev3-meta">From 1:00 PM · Football, rugby & more</div></div>
+          <svg class="ev-arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="ev-item">
+          <div class="ev-date"><div class="ev-day">Daily</div><div class="ev-mon"></div></div>
+          <div class="ev-sep"></div>
+          <div class="ev-info"><div class="ev-title" data-i18n="ev4-title">Happy Hour</div><div class="ev-meta" data-i18n="ev4-meta">4:00 PM – 6:00 PM · Selected drinks 2-for-1</div></div>
+          <svg class="ev-arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="events-photo fade-up d2">
+      <img src="https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?auto=format&fit=crop&w=1000&q=92" alt="Live music at Clarke's Bar">
+      <div class="events-caption">
+        <div class="etag" data-i18n="ev-photo-tag">Every Friday</div>
+        <div class="ettl" data-i18n="ev-photo-ttl">Live Music Night</div>
+        <div class="esub" data-i18n="ev-photo-sub">Local artists · Special guests · Great atmosphere</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="loc-sec" id="location">
+  <div class="loc-grid">
+    <div class="loc-map-wrap fade-up">
+      <div class="loc-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3128.5!2d-0.7200!3d37.9100!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sPlaya+Flamenca!5e0!3m2!1sen!2ses!4v1" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Clarke's Bar location"></iframe>
+      </div>
+      <div class="loc-pin">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Playa Flamenca, Alicante
+      </div>
+    </div>
+    <div class="loc-info">
+      <div class="eyebrow dk fade-up"><span></span><span data-i18n="lc-eyebrow">Find Us</span></div>
+      <h2 class="sec-title dark fade-up d1" data-i18n-html="lc-h2">Come and<br><em style="color:var(--green-md);font-style:italic;">see us.</em></h2>
+      <div class="contact-list fade-up d2">
+        <a href="#" class="clnk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-i18n-html="lc-addr">Playa Flamenca, Orihuela Costa<br>03189 Alicante, Spain</span>
+        </a>
+        <a href="tel:+34965000000" class="clnk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.007 1.17 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +34 965 000 000
+        </a>
+        <a href="mailto:hello@clarkes-bar.com" class="clnk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          hello@clarkes-bar.com
+        </a>
+      </div>
+      <div class="hours-tbl fade-up d3">
+        <div class="hours-head" data-i18n="lc-hours-head">Opening Hours</div>
+        <div class="hrow"><span class="hday" data-i18n="lc-day1">Monday – Thursday</span><span class="htime open">12:00 – 02:00</span></div>
+        <div class="hrow"><span class="hday" data-i18n="lc-day2">Friday</span><span class="htime open">12:00 – 03:00</span></div>
+        <div class="hrow"><span class="hday" data-i18n="lc-day3">Saturday</span><span class="htime open">12:00 – 03:00</span></div>
+        <div class="hrow"><span class="hday" data-i18n="lc-day4">Sunday</span><span class="htime open">12:00 – 00:00</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-sec" id="reviews">
+  <div class="reviews-inner">
+    <div class="reviews-head">
+      <div class="eyebrow fade-up"><span></span><span data-i18n="rv-eyebrow">What Our Guests Say</span></div>
+      <h2 class="sec-title fade-up d1" data-i18n-html="rv-h2">Loved by <em style="color:var(--gold);font-style:italic;">locals & visitors</em> alike.</h2>
+      <div class="g-badge fade-up d2">
+        <div class="g-badge-left">
+          <div class="g-logo"><span class="g-G">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g2">g</span><span class="g-l">l</span><span class="g-e">e</span></div>
+          <div class="g-divider"></div>
+          <div class="g-score-block">
+            <div class="g-score-num">4.8</div>
+            <div class="g-stars-row"><span class="g-star">★</span><span class="g-star">★</span><span class="g-star">★</span><span class="g-star">★</span><span class="g-star">★</span></div>
+            <div class="g-count" data-i18n="rv-count">Based on 320+ reviews</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="rev-card fade-up">
+        <div class="rev-header">
+          <div class="rev-avatar" style="background:var(--gold)">S</div>
+          <div class="rev-meta"><div class="rev-name">Sarah M.</div><div class="rev-date">2 weeks ago</div></div>
+        </div>
+        <div class="rev-stars"><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span></div>
+        <div class="rev-text" data-i18n="rv1-text">Absolutely love Clarke's! The wine selection is outstanding and the staff are so knowledgeable. Quiz night on Thursdays is brilliant fun — we come every week now. Proper Irish pub atmosphere.</div>
+        <div class="rev-footer"><div class="rev-g-mark"><span class="rev-g-G">G</span><span class="rev-g-rest">oogle Review</span></div></div>
+      </div>
+      <div class="rev-card fade-up d1">
+        <div class="rev-header">
+          <div class="rev-avatar" style="background:var(--oxblood)">J</div>
+          <div class="rev-meta"><div class="rev-name">James T.</div><div class="rev-date">1 month ago</div></div>
+        </div>
+        <div class="rev-stars"><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span></div>
+        <div class="rev-text" data-i18n="rv2-text">The best bar on the Costa Blanca — and I've been coming since 2008. Terrace is perfect for watching the world go by with a cold pint. Real community feel, genuine Irish hospitality.</div>
+        <div class="rev-footer"><div class="rev-g-mark"><span class="rev-g-G">G</span><span class="rev-g-rest">oogle Review</span></div></div>
+      </div>
+      <div class="rev-card fade-up d2">
+        <div class="rev-header">
+          <div class="rev-avatar" style="background:var(--green-md)">A</div>
+          <div class="rev-meta"><div class="rev-name">Anna K.</div><div class="rev-date">3 weeks ago</div></div>
+        </div>
+        <div class="rev-stars"><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span></div>
+        <div class="rev-text" data-i18n="rv3-text">Gorgeous atmosphere, fantastic gin selection and the Clarke's G&T is genuinely one of the best I've ever had. Live music on Friday was the cherry on top. This place has real soul.</div>
+        <div class="rev-footer"><div class="rev-g-mark"><span class="rev-g-G">G</span><span class="rev-g-rest">oogle Review</span></div></div>
+      </div>
+    </div>
+    <div class="reviews-cta fade-up">
+      <p class="reviews-cta-note" data-i18n="rv-note">Had a great experience? We'd love to hear from you.</p>
+      <a href="#" target="_blank" rel="noopener" class="btn btn-google">
+        <div class="g-logo" style="font-size:1rem"><span class="g-G">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g2">g</span><span class="g-l">l</span><span class="g-e">e</span></div>
+        <span data-i18n="rv-btn">Write a Review</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-pre" data-i18n="ct-pre">Your local in Playa Flamenca · Est. 2006</div>
+  <div class="orn grn" style="max-width:280px;margin:0 auto 1.5rem;position:relative;">
+    <div class="orn-line"></div><div class="orn-diamond"></div><div class="orn-line"></div>
+  </div>
+  <h2 class="cta-title" data-i18n-html="ct-title">Come in for <em>one.</em></h2>
+  <p class="cta-payoff" data-i18n-html="ct-payoff"><strong>Great drinks. Great people.</strong> A proper Irish welcome every time.</p>
+  <div class="cta-btns">
+    <a href="tel:+34965000000" class="btn btn-gold" data-i18n="ct-btn-call">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.007 1.17 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Call Us
+    </a>
+    <a href="#location" class="btn btn-outline" data-i18n="ct-btn-dir">Get Directions</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="ft-logo"><img src="brand_assets/clarkes%20logo%20transparant.png" alt="Clarke's Bar"></div>
+      <p class="ft-tagline" data-i18n-html="ft-tagline">Irish Pub · Winebar & Spirits<br>Est. 2006 · Playa Flamenca, Alicante.<br>Your home away from home on the Costa Blanca.</p>
+      <div class="ft-socials">
+        <a href="#" class="soc" aria-label="Facebook">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="#" class="soc" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" class="soc" aria-label="TripAdvisor">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-head" data-i18n="ft-col1">Visit</div>
+      <ul class="ft-links">
+        <li><a href="#about" data-i18n="ft-l1-1">Our Story</a></li>
+        <li><a href="#menu" data-i18n="ft-l1-2">Drinks Menu</a></li>
+        <li><a href="#events" data-i18n="ft-l1-3">Events</a></li>
+        <li><a href="#location" data-i18n="ft-l1-4">Find Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-head" data-i18n="ft-col2">Events</div>
+      <ul class="ft-links">
+        <li><a href="#events" data-i18n="ft-l2-1">Thursday Quiz Night</a></li>
+        <li><a href="#events" data-i18n="ft-l2-2">Friday Live Music</a></li>
+        <li><a href="#events" data-i18n="ft-l2-3">Sports on Screen</a></li>
+        <li><a href="#events" data-i18n="ft-l2-4">Happy Hour Daily</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-head" data-i18n="ft-col3">Contact</div>
+      <ul class="ft-links">
+        <li><a href="tel:+34965000000">+34 965 000 000</a></li>
+        <li><a href="mailto:hello@clarkes-bar.com">hello@clarkes-bar.com</a></li>
+        <li><a href="#location">Playa Flamenca, Alicante</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="ft-copy" data-i18n="ft-copy">© 2025 Clarke's Bar · Irish Pub · Winebar & Spirits · Playa Flamenca, Alicante</p>
+    <p class="ft-copy">Designed with care</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/34965000000" class="wa-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
+  <svg width="27" height="27" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+
+  const mob = document.getElementById('nav-mob');
+  const links = document.getElementById('nav-links');
+  mob.addEventListener('click', () => {
+    const open = mob.classList.toggle('open');
+    links.classList.toggle('open', open);
+    mob.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mob.classList.remove('open'); links.classList.remove('open');
+    mob.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';
+  }));
+
+  function switchTab(btn, id) {
+    document.querySelectorAll('.m-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    ['t-wines','t-spirits','t-beer'].forEach(t => {
+      const el = document.getElementById(t);
+      if (el) el.style.display = t === id ? 'grid' : 'none';
+    });
+  }
+
+  /* ── TRANSLATIONS ─────────────────────────────────── */
+  const i18n = {
+    en: {
+      'nav-story':'Our Story','nav-drinks':'Drinks','nav-events':'Events','nav-find':'Find Us','nav-reviews':'Reviews','nav-book':'Book a Table',
+      'hero-open':'Open Today · Mon–Sat 12:00–02:00 · Sun 12:00–00:00',
+      'hero-est-top':'Established','hero-est-sub':'Family Irish Pub · Playa Flamenca',
+      'hero-sub':'Irish Pub · Winebar & Spirits · Playa Flamenca, Alicante',
+      'hero-body':'A family-run Irish pub since 2006 — where the pints are perfectly kept, the quiz nights are legendary, and the craic is always good. Your local, every single day.',
+      'hero-btn-menu':'View Drinks Menu',
+      'hero-feat-1':'Live Music','hero-feat-2':'Thursday Quiz','hero-feat-3':'Sun Terrace','hero-feat-4':'Community Hub','hero-feat-5':'Family Run',
+      'ab-eyebrow':'Our Story',
+      'ab-h2':'A real Irish pub,<br><em style="color:var(--green-md);font-style:italic;">right here in Alicante.</em>',
+      'ab-body1':"Clarke's Bar was founded in 2006 as a family-run Irish pub in the heart of Playa Flamenca. What started as a neighbourhood watering hole has grown into the beating social heart of the community — a place where regulars become friends, where every pour is made with care, and where the craic is always good.",
+      'ab-body2':"Whether you're here for a perfectly kept pint, a glass of Rioja on the terrace, or a quiet Tuesday that somehow turns into a Thursday — you're always welcome at Clarke's.",
+      'ab-badge':'A family pub · <strong>since 2006</strong>',
+      'ab-feat-1':'Wine & Spirits','ab-feat-2':'Live Music','ab-feat-3':'Quiz Nights','ab-feat-4':'Terrace',
+      'mn-eyebrow':'Our Selection',
+      'mn-h2':'Expertly poured,<br><span style="color:var(--gold)">every single time.</span>',
+      'mn-tab-1':'Wines','mn-tab-2':'Spirits & Cocktails','mn-tab-3':'Draught & Beer',
+      'wn1-tag':'House Red','wn1-name':'Tempranillo Rioja Crianza','wn1-desc':'Full-bodied with cherry, vanilla and oak. A Spanish classic from the acclaimed Rioja region.',
+      'wn2-tag':"Sommelier's Choice",'wn2-name':'Albariño Rías Baixas','wn2-desc':'Crisp, aromatic white with citrus and peach. The perfect match for a warm Alicante evening on the terrace.',
+      'wn3-tag':'Celebration','wn3-name':'Cava Brut Reserva','wn3-desc':'Fine bubbles, green apple and brioche notes. Spanish sparkling at its most elegant.',
+      'sp1-tag':'Signature Serve','sp1-name':"Clarke's G&T",'sp1-desc':'Premium gin, hand-picked botanicals, Fever-Tree tonic. Served with fresh rosemary and pink grapefruit.',
+      'sp2-tag':'Irish Spirits','sp2-name':'Single Malt Whiskey','sp2-desc':"A rotating selection of Irish and Scottish single malts. Ask our staff for today's featured pour.",
+      'sp3-tag':'Cocktail Bar','sp3-name':'Aperol Spritz','sp3-desc':'Aperol, Prosecco, soda and orange. The terrace-perfect Italian aperitivo.',
+      'br1-tag':'On Draught','br1-name':'Estrella Damm','br1-desc':"Spain's finest lager on draught. Cold, crisp and refreshing — served in a chilled glass.",
+      'br2-tag':'Craft Tap','br2-name':'Rotating Craft IPA','br2-desc':'Our rotating craft tap features the best local and international IPAs. Ask the bar what\'s pouring today.',
+      'br3-tag':'Non-Alcoholic','br3-name':'Soft Drinks & Juices','br3-desc':'Fresh juices, premium tonics, Fever-Tree mixers and soft drinks for the whole family.',
+      'mn-cta':'Full Menu at the Bar',
+      'qt-text':'"You come in for <strong>one pint</strong> and stay for the evening. That\'s not an accident — that\'s <strong>Clarke\'s doing its job.</strong>"',
+      'qt-attr':"— A regular at Clarke's Bar, Playa Flamenca",
+      'ev-eyebrow':"What's On",
+      'ev-h2':'There\'s always a reason<br><em style="color:var(--gold);font-style:italic;">to come back.</em>',
+      'ev-body':"From our legendary Thursday Quiz Night to live music on Fridays and weekend sport on the big screen — Clarke's is never quiet for long.",
+      'ev1-title':'Quiz Night','ev1-meta':'8:00 PM · Teams of up to 6 · Cash Prize',
+      'ev2-title':'Live Music Night','ev2-meta':'9:00 PM · Local artists & special guests',
+      'ev3-title':'Sports on the Big Screen','ev3-meta':'From 1:00 PM · Football, rugby & more',
+      'ev4-title':'Happy Hour','ev4-meta':'4:00 PM – 6:00 PM · Selected drinks 2-for-1',
+      'ev-photo-tag':'Every Friday','ev-photo-ttl':'Live Music Night','ev-photo-sub':'Local artists · Special guests · Great atmosphere',
+      'lc-eyebrow':'Find Us',
+      'lc-h2':'Come and<br><em style="color:var(--green-md);font-style:italic;">see us.</em>',
+      'lc-addr':'Playa Flamenca, Orihuela Costa<br>03189 Alicante, Spain',
+      'lc-hours-head':'Opening Hours',
+      'lc-day1':'Monday – Thursday','lc-day2':'Friday','lc-day3':'Saturday','lc-day4':'Sunday',
+      'rv-eyebrow':'What Our Guests Say',
+      'rv-h2':'Loved by <em style="color:var(--gold);font-style:italic;">locals & visitors</em> alike.',
+      'rv-count':'Based on 320+ reviews',
+      'rv1-text':"Absolutely love Clarke's! The wine selection is outstanding and the staff are so knowledgeable. Quiz night on Thursdays is brilliant fun — we come every week now. Proper Irish pub atmosphere.",
+      'rv2-text':"The best bar on the Costa Blanca — and I've been coming since 2008. Terrace is perfect for watching the world go by with a cold pint. Real community feel, genuine Irish hospitality.",
+      'rv3-text':"Gorgeous atmosphere, fantastic gin selection and the Clarke's G&T is genuinely one of the best I've ever had. Live music on Friday was the cherry on top. This place has real soul.",
+      'rv-note':"Had a great experience? We'd love to hear from you.",'rv-btn':'Write a Review',
+      'ct-pre':'Your local in Playa Flamenca · Est. 2006',
+      'ct-title':'Come in for <em>one.</em>',
+      'ct-payoff':'<strong>Great drinks. Great people.</strong> A proper Irish welcome every time.',
+      'ct-btn-call':'Call Us','ct-btn-dir':'Get Directions',
+      'ft-tagline':'Irish Pub · Winebar & Spirits<br>Est. 2006 · Playa Flamenca, Alicante.<br>Your home away from home on the Costa Blanca.',
+      'ft-col1':'Visit','ft-col2':'Events','ft-col3':'Contact',
+      'ft-l1-1':'Our Story','ft-l1-2':'Drinks Menu','ft-l1-3':'Events','ft-l1-4':'Find Us',
+      'ft-l2-1':'Thursday Quiz Night','ft-l2-2':'Friday Live Music','ft-l2-3':'Sports on Screen','ft-l2-4':'Happy Hour Daily',
+      'ft-copy':"© 2025 Clarke's Bar · Irish Pub · Winebar & Spirits · Playa Flamenca, Alicante",
+    },
+    es: {
+      'nav-story':'Nuestra Historia','nav-drinks':'Bebidas','nav-events':'Eventos','nav-find':'Encuéntranos','nav-reviews':'Opiniones','nav-book':'Reservar Mesa',
+      'hero-open':'Abierto Hoy · Lun–Sáb 12:00–02:00 · Dom 12:00–00:00',
+      'hero-est-top':'Fundado en','hero-est-sub':'Pub Irlandés Familiar · Playa Flamenca',
+      'hero-sub':'Pub Irlandés · Vinos & Destilados · Playa Flamenca, Alicante',
+      'hero-body':'Un pub irlandés familiar desde 2006 — donde las cervezas se sirven perfectas, las noches de quiz son legendarias, y el buen ambiente siempre está garantizado. Tu local, cada día.',
+      'hero-btn-menu':'Ver Carta de Bebidas',
+      'hero-feat-1':'Música en Directo','hero-feat-2':'Quiz Jueves','hero-feat-3':'Terraza Soleada','hero-feat-4':'Centro Comunitario','hero-feat-5':'Negocio Familiar',
+      'ab-eyebrow':'Nuestra Historia',
+      'ab-h2':'Un pub irlandés de verdad,<br><em style="color:var(--green-md);font-style:italic;">aquí en Alicante.</em>',
+      'ab-body1':"Clarke's Bar fue fundado en 2006 como un pub irlandés familiar en el corazón de Playa Flamenca. Lo que empezó como un bar de barrio se ha convertido en el corazón social de la comunidad — un lugar donde los habituales se hacen amigos, donde cada copa se sirve con cuidado, y donde el buen ambiente siempre está garantizado.",
+      'ab-body2':"Tanto si vienes a por una pinta perfectamente servida, una copa de Rioja en la terraza, o un tranquilo martes que de alguna manera se convierte en jueves — en Clarke's siempre eres bienvenido.",
+      'ab-badge':'Un pub familiar · <strong>desde 2006</strong>',
+      'ab-feat-1':'Vinos & Destilados','ab-feat-2':'Música en Directo','ab-feat-3':'Noches de Quiz','ab-feat-4':'Terraza',
+      'mn-eyebrow':'Nuestra Selección',
+      'mn-h2':'Servido con maestría,<br><span style="color:var(--gold)">cada vez.</span>',
+      'mn-tab-1':'Vinos','mn-tab-2':'Destilados & Cócteles','mn-tab-3':'Tirada & Cerveza',
+      'wn1-tag':'Vino de la Casa','wn1-name':'Tempranillo Rioja Crianza','wn1-desc':'Corpulento con notas de cereza, vainilla y roble. Un clásico español de la aclamada Rioja.',
+      'wn2-tag':'Elección del Sumiller','wn2-name':'Albariño Rías Baixas','wn2-desc':'Blanco fresco y aromático con cítricos y melocotón. El maridaje perfecto para una tarde cálida en la terraza de Alicante.',
+      'wn3-tag':'Celebración','wn3-name':'Cava Brut Reserva','wn3-desc':'Burbujas finas, manzana verde y notas de brioche. El espumoso español en su máxima expresión.',
+      'sp1-tag':'Servicio Estrella','sp1-name':"Clarke's G&T",'sp1-desc':'Ginebra premium, botánicos seleccionados, tónica Fever-Tree. Servido con romero fresco y pomelo rosa.',
+      'sp2-tag':'Destilados Irlandeses','sp2-name':'Whisky Single Malt','sp2-desc':'Una selección rotativa de single malts irlandeses y escoceses. Pregunta a nuestro personal por la copa destacada del día.',
+      'sp3-tag':'Coctelería','sp3-name':'Aperol Spritz','sp3-desc':'Aperol, Prosecco, soda y naranja. El aperitivo italiano perfecto para la terraza.',
+      'br1-tag':'En Tirada','br1-name':'Estrella Damm','br1-desc':'La mejor lager española en tirada. Fría, refrescante y servida en un vaso helado.',
+      'br2-tag':'Grifo Artesano','br2-name':'IPA Artesana Rotativa','br2-desc':'Nuestro grifo rotativo ofrece las mejores IPAs locales e internacionales. Pregunta en la barra qué se sirve hoy.',
+      'br3-tag':'Sin Alcohol','br3-name':'Refrescos & Zumos','br3-desc':'Zumos frescos, tónicas premium, mixers Fever-Tree y refrescos para toda la familia.',
+      'mn-cta':'Carta Completa en el Bar',
+      'qt-text':'"Entras a por <strong>una pinta</strong> y te quedas toda la tarde. Eso no es un accidente — es <strong>Clarke\'s haciendo su trabajo.</strong>"',
+      'qt-attr':"— Un habitual de Clarke's Bar, Playa Flamenca",
+      'ev-eyebrow':'Qué Hay Hoy',
+      'ev-h2':'Siempre hay un motivo<br><em style="color:var(--gold);font-style:italic;">para volver.</em>',
+      'ev-body':"Desde nuestra legendaria Noche de Quiz del jueves hasta la música en directo los viernes y el deporte de fin de semana en la pantalla grande — Clarke's nunca está en silencio mucho tiempo.",
+      'ev1-title':'Noche de Quiz','ev1-meta':'20:00 · Equipos de hasta 6 · Premio en Efectivo',
+      'ev2-title':'Noche de Música en Directo','ev2-meta':'21:00 · Artistas locales e invitados especiales',
+      'ev3-title':'Deporte en Pantalla Grande','ev3-meta':'Desde las 13:00 · Fútbol, rugby y más',
+      'ev4-title':'Happy Hour','ev4-meta':'16:00 – 18:00 · Bebidas seleccionadas 2x1',
+      'ev-photo-tag':'Cada Viernes','ev-photo-ttl':'Noche de Música en Directo','ev-photo-sub':'Artistas locales · Invitados especiales · Gran ambiente',
+      'lc-eyebrow':'Encuéntranos',
+      'lc-h2':'Ven y<br><em style="color:var(--green-md);font-style:italic;">visítanos.</em>',
+      'lc-addr':'Playa Flamenca, Orihuela Costa<br>03189 Alicante, España',
+      'lc-hours-head':'Horario de Apertura',
+      'lc-day1':'Lunes – Jueves','lc-day2':'Viernes','lc-day3':'Sábado','lc-day4':'Domingo',
+      'rv-eyebrow':'Lo Que Dicen Nuestros Clientes',
+      'rv-h2':'Amados por <em style="color:var(--gold);font-style:italic;">locales y visitantes</em> por igual.',
+      'rv-count':'Basado en 320+ opiniones',
+      'rv1-text':"¡Me encanta Clarke's! La selección de vinos es excepcional y el personal es muy experto. La noche de quiz del jueves es muy divertida — ya venimos todas las semanas. Un ambiente de pub irlandés auténtico.",
+      'rv2-text':"El mejor bar de la Costa Blanca — y llevo viniendo desde 2008. La terraza es perfecta para ver pasar el mundo con una pinta fría. Un ambiente comunitario real, hospitalidad irlandesa genuina.",
+      'rv3-text':"Ambiente precioso, una selección de ginebras fantástica y el G&T de Clarke's es genuinamente uno de los mejores que he probado. La música en directo del viernes fue el broche perfecto. Este lugar tiene alma.",
+      'rv-note':"¿Tuviste una gran experiencia? Nos encantaría saberlo.",'rv-btn':'Escribir una Opinión',
+      'ct-pre':'Tu local en Playa Flamenca · Est. 2006',
+      'ct-title':'Entra a por <em>una.</em>',
+      'ct-payoff':'<strong>Bebidas geniales. Gente genial.</strong> Una bienvenida irlandesa de verdad cada vez.',
+      'ct-btn-call':'Llámanos','ct-btn-dir':'Cómo Llegar',
+      'ft-tagline':'Pub Irlandés · Vinos & Destilados<br>Est. 2006 · Playa Flamenca, Alicante.<br>Tu hogar lejos del hogar en la Costa Blanca.',
+      'ft-col1':'Visítanos','ft-col2':'Eventos','ft-col3':'Contacto',
+      'ft-l1-1':'Nuestra Historia','ft-l1-2':'Carta de Bebidas','ft-l1-3':'Eventos','ft-l1-4':'Encuéntranos',
+      'ft-l2-1':'Quiz Noche del Jueves','ft-l2-2':'Música en Directo Viernes','ft-l2-3':'Deporte en Pantalla','ft-l2-4':'Happy Hour Diario',
+      'ft-copy':"© 2025 Clarke's Bar · Pub Irlandés · Vinos & Destilados · Playa Flamenca, Alicante",
+    }
+  };
+
+  const HTML_KEYS = new Set(['ab-h2','ab-badge','mn-h2','qt-text','ev-h2','lc-h2','lc-addr','rv-h2','ct-title','ct-payoff','ft-tagline']);
+
+  function setLang(lang) {
+    const t = i18n[lang];
+    Object.keys(t).forEach(key => {
+      document.querySelectorAll(`[data-i18n="${key}"]`).forEach(el => { el.textContent = t[key]; });
+      document.querySelectorAll(`[data-i18n-html="${key}"]`).forEach(el => { el.innerHTML = t[key]; });
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+    document.documentElement.lang = lang;
+    localStorage.setItem('clarkesLang', lang);
+  }
+
+  (function() {
+    const saved = localStorage.getItem('clarkesLang');
+    if (saved === 'es') setLang('es');
+  })();
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
