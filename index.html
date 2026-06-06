@@ -443,6 +443,13 @@
     @keyframes fadeUp  { from { opacity:0; transform:translateY(26px); } to { opacity:1; transform:translateY(0); } }
     @keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
 
+    /* ─── LANG TOGGLE ─── */
+    .lang-toggle { display: flex; align-items: center; gap: 0; margin-right: 1rem; }
+    .lang-btn { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; background: none; border: none; cursor: pointer; padding: 0.35rem 0.5rem; color: rgba(61,61,55,0.32); transition: color 0.2s ease; font-family: 'Montserrat', sans-serif; }
+    .lang-btn.active { color: var(--terracotta); }
+    .lang-btn:hover:not(.active) { color: var(--charcoal); }
+    .lang-sep { color: rgba(61,61,55,0.18); font-size: 0.65rem; user-select: none; }
+
     /* ─── MOBILE NAV ─── */
     .nav-mob-tel { display:none; color:var(--ink-black); line-height:0; padding:0.4rem; }
     .nav-mob {
@@ -456,6 +463,8 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
+      .lang-btn { padding: 0.55rem 0.7rem; }
+      .lang-toggle { margin-right: 0.25rem; }
       .nav-cta { display:none; }
       .nav-mob, .nav-mob-tel { display:flex; }
       .nav-links {
@@ -618,15 +627,20 @@
     </a>
   </div>
   <ul class="nav-links" id="nav-links">
-    <li><a href="#about">Nosotros</a></li>
-    <li><a href="#menu">Carta</a></li>
-    <li><a href="#events">Música</a></li>
-    <li><a href="#location">Ubicación</a></li>
-    <li><a href="#reviews">Reseñas</a></li>
+    <li><a href="#about" data-i18n="nav-about">Nosotros</a></li>
+    <li><a href="#menu" data-i18n="nav-menu">Carta</a></li>
+    <li><a href="#events" data-i18n="nav-events">Música</a></li>
+    <li><a href="#location" data-i18n="nav-find">Ubicación</a></li>
+    <li><a href="#reviews" data-i18n="nav-reviews">Reseñas</a></li>
   </ul>
+  <div class="lang-toggle">
+    <button class="lang-btn active" data-lang="es" onclick="setLang('es')">ES</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+  </div>
   <a href="tel:+34657373736" class="nav-cta btn">
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-    Reservar mesa
+    <span data-i18n="nav-book">Reservar mesa</span>
   </a>
   <a href="tel:+34657373736" class="nav-mob-tel" aria-label="Llamar">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.007 1.17 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -645,38 +659,38 @@
   <div class="hero-inner">
     <div class="hours-badge">
       <span class="hours-dot"></span>
-      Abierto hoy · Lun–Vie 08:00–23:00 &nbsp;·&nbsp; Sáb 08:00–00:00 &nbsp;·&nbsp; Dom 09:00–22:00
+      <span data-i18n="hero-hours">Abierto hoy · Lun–Vie 08:00–23:00 &nbsp;·&nbsp; Sáb 08:00–00:00 &nbsp;·&nbsp; Dom 09:00–22:00</span>
     </div>
-    <div class="hero-eyebrow"><span></span>Playa Flamenca · Alicante</div>
-    <h1 class="hero-h1">Buena comida,<br><em>buena música.</em></h1>
-    <p class="hero-tagline">Good drinks, good people, good music.</p>
-    <p class="hero-sub">Tu cafetería de siempre en primera línea del Mediterráneo. Terraza, carta de todo el día y música en vivo cada semana.</p>
+    <div class="hero-eyebrow"><span></span><span data-i18n="hero-eyebrow">Playa Flamenca · Alicante</span></div>
+    <h1 class="hero-h1" data-i18n-html="hero-h1">Buena comida,<br><em>buena música.</em></h1>
+    <p class="hero-tagline" data-i18n="hero-tagline">Good drinks, good people, good music.</p>
+    <p class="hero-sub" data-i18n="hero-sub">Tu cafetería de siempre en primera línea del Mediterráneo. Terraza, carta de todo el día y música en vivo cada semana.</p>
     <div class="hero-btns">
       <a href="tel:+34657373736" class="btn btn-primary">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Reservar mesa
+        <span data-i18n="hero-btn-book">Reservar mesa</span>
       </a>
       <a href="#menu" class="btn btn-blue">
-        Ver la carta
+        <span data-i18n="hero-btn-menu">Ver la carta</span>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
       </a>
     </div>
     <div class="hero-feats">
       <div class="hfeat">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-        Música en vivo
+        <span data-i18n="hero-feat-1">Música en vivo</span>
       </div>
       <div class="hfeat">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-        Terraza exterior
+        <span data-i18n="hero-feat-2">Terraza exterior</span>
       </div>
       <div class="hfeat">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-        Ambiente familiar
+        <span data-i18n="hero-feat-3">Ambiente familiar</span>
       </div>
       <div class="hfeat">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Abierto todos los días
+        <span data-i18n="hero-feat-4">Abierto todos los días</span>
       </div>
     </div>
   </div>
@@ -710,29 +724,29 @@
       <div class="about-overlay">
         <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=420&q=80" alt="Café en terraza">
       </div>
-      <div class="about-badge">Tu sitio de siempre</div>
+      <div class="about-badge" data-i18n="ab-badge">Tu sitio de siempre</div>
     </div>
     <div>
-      <div class="eyebrow fade-up"><span></span>Nuestra historia</div>
-      <h2 class="sec-title fade-up d1">Un rincón con<br><em style="color:var(--terracotta)">carácter propio</em></h2>
-      <p class="about-body fade-up d2">Concierto Cafeteria lleva años siendo el punto de encuentro de Playa Flamenca. Aquí conviven el café de la mañana, el vermut del mediodía, la carta de todo el día y las noches de música en directo — todo con la misma energía cálida y familiar.</p>
-      <p class="about-body fade-up d3" style="margin-top:-0.5rem;">Somos amigos, familia y vecinos. Un espacio donde la gente repite porque se siente bien, come bien y pasa un buen rato.</p>
+      <div class="eyebrow fade-up"><span></span><span data-i18n="ab-eyebrow">Nuestra historia</span></div>
+      <h2 class="sec-title fade-up d1" data-i18n-html="ab-h2">Un rincón con<br><em style="color:var(--terracotta)">carácter propio</em></h2>
+      <p class="about-body fade-up d2" data-i18n="ab-body1">Concierto Cafeteria lleva años siendo el punto de encuentro de Playa Flamenca. Aquí conviven el café de la mañana, el vermut del mediodía, la carta de todo el día y las noches de música en directo — todo con la misma energía cálida y familiar.</p>
+      <p class="about-body fade-up d3" style="margin-top:-0.5rem;" data-i18n="ab-body2">Somos amigos, familia y vecinos. Un espacio donde la gente repite porque se siente bien, come bien y pasa un buen rato.</p>
       <div class="about-feats fade-up d4">
         <div class="afeat">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-          <span class="afeat-lbl">Cafetería</span>
+          <span class="afeat-lbl" data-i18n="ab-feat-1">Cafetería</span>
         </div>
         <div class="afeat">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-          <span class="afeat-lbl">Música live</span>
+          <span class="afeat-lbl" data-i18n="ab-feat-2">Música live</span>
         </div>
         <div class="afeat">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          <span class="afeat-lbl">Terraza</span>
+          <span class="afeat-lbl" data-i18n="ab-feat-3">Terraza</span>
         </div>
         <div class="afeat">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-          <span class="afeat-lbl">Familiar</span>
+          <span class="afeat-lbl" data-i18n="ab-feat-4">Familiar</span>
         </div>
       </div>
     </div>
@@ -743,13 +757,13 @@
 <section class="menu-sec" id="menu">
   <div class="menu-top">
     <div class="fade-up">
-      <div class="eyebrow"><span></span>Nuestra carta</div>
-      <h2 class="sec-title">Para comer bien,<br><span style="color:var(--terracotta)">a buen precio.</span></h2>
+      <div class="eyebrow"><span></span><span data-i18n="mn-eyebrow">Nuestra carta</span></div>
+      <h2 class="sec-title" data-i18n-html="mn-h2">Para comer bien,<br><span style="color:var(--terracotta)">a buen precio.</span></h2>
     </div>
     <div class="menu-tabs fade-up d2">
-      <button class="m-tab active" onclick="switchTab(this,'t-desayuno')">Desayunos</button>
-      <button class="m-tab" onclick="switchTab(this,'t-comidas')">Comidas</button>
-      <button class="m-tab" onclick="switchTab(this,'t-bebidas')">Bebidas</button>
+      <button class="m-tab active" onclick="switchTab(this,'t-desayuno')" data-i18n="mn-tab-1">Desayunos</button>
+      <button class="m-tab" onclick="switchTab(this,'t-comidas')" data-i18n="mn-tab-2">Comidas</button>
+      <button class="m-tab" onclick="switchTab(this,'t-bebidas')" data-i18n="mn-tab-3">Bebidas</button>
     </div>
   </div>
 
@@ -757,23 +771,23 @@
     <div class="menu-card fade-up">
       <div class="card-img"><img src="https://images.unsplash.com/photo-1567529692333-de9fd6772897?auto=format&fit=crop&w=600&q=75" alt="Tostadas con tomate"></div>
       <div class="card-price">€3.50</div>
-      <div class="card-tag">Clásico de la casa</div>
-      <div class="card-name">Tostadas con tomate & AOVE</div>
-      <p class="card-desc">Pan de masa madre, tomate fresco rallado, aceite de oliva virgen extra y sal en escamas.</p>
+      <div class="card-tag" data-i18n="mn-d1-tag">Clásico de la casa</div>
+      <div class="card-name" data-i18n="mn-d1-name">Tostadas con tomate & AOVE</div>
+      <p class="card-desc" data-i18n="mn-d1-desc">Pan de masa madre, tomate fresco rallado, aceite de oliva virgen extra y sal en escamas.</p>
     </div>
     <div class="menu-card fade-up d1">
       <div class="card-img"><img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=75" alt="Huevos rotos"></div>
       <div class="card-price">€9.90</div>
-      <div class="card-tag">Favorito local</div>
-      <div class="card-name">Huevos rotos con jamón</div>
-      <p class="card-desc">Huevos de corral sobre patatas fritas caseras y jamón serrano. El plato más pedido de la casa.</p>
+      <div class="card-tag" data-i18n="mn-d2-tag">Favorito local</div>
+      <div class="card-name" data-i18n="mn-d2-name">Huevos rotos con jamón</div>
+      <p class="card-desc" data-i18n="mn-d2-desc">Huevos de corral sobre patatas fritas caseras y jamón serrano. El plato más pedido de la casa.</p>
     </div>
     <div class="menu-card fade-up d2">
       <div class="card-img"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=75" alt="Café con leche"></div>
       <div class="card-price">€5.50</div>
-      <div class="card-tag">Cafetería</div>
-      <div class="card-name">Desayuno completo</div>
-      <p class="card-desc">Café con leche o zumo, tostada con mantequilla y mermelada, más zumo de naranja natural.</p>
+      <div class="card-tag" data-i18n="mn-d3-tag">Cafetería</div>
+      <div class="card-name" data-i18n="mn-d3-name">Desayuno completo</div>
+      <p class="card-desc" data-i18n="mn-d3-desc">Café con leche o zumo, tostada con mantequilla y mermelada, más zumo de naranja natural.</p>
     </div>
   </div>
 
@@ -781,23 +795,23 @@
     <div class="menu-card fade-up">
       <div class="card-img"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=75" alt="Ensalada mediterránea"></div>
       <div class="card-price">€9.50</div>
-      <div class="card-tag">Fresco y ligero</div>
-      <div class="card-name">Ensalada mediterránea</div>
-      <p class="card-desc">Tomate, pepino, cebolla morada, aceitunas, queso feta y anchoas del Cantábrico.</p>
+      <div class="card-tag" data-i18n="mn-c1-tag">Fresco y ligero</div>
+      <div class="card-name" data-i18n="mn-c1-name">Ensalada mediterránea</div>
+      <p class="card-desc" data-i18n="mn-c1-desc">Tomate, pepino, cebolla morada, aceitunas, queso feta y anchoas del Cantábrico.</p>
     </div>
     <div class="menu-card fade-up d1">
       <div class="card-img"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=75" alt="Bocadillo de calamares"></div>
       <div class="card-price">€7.80</div>
-      <div class="card-tag">Para llevar</div>
-      <div class="card-name">Bocadillo de calamares</div>
-      <p class="card-desc">Calamares a la romana con alioli casero en barra crujiente recién horneada. Un clásico sin igual.</p>
+      <div class="card-tag" data-i18n="mn-c2-tag">Para llevar</div>
+      <div class="card-name" data-i18n="mn-c2-name">Bocadillo de calamares</div>
+      <p class="card-desc" data-i18n="mn-c2-desc">Calamares a la romana con alioli casero en barra crujiente recién horneada. Un clásico sin igual.</p>
     </div>
     <div class="menu-card fade-up d2">
       <div class="card-img"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=75" alt="Menú del día"></div>
       <div class="card-price">€12</div>
-      <div class="card-tag">Menú del día</div>
-      <div class="card-name">3 platos + bebida incluida</div>
-      <p class="card-desc">Cocina de mercado que cambia a diario. Primero, segundo y postre con bebida incluida.</p>
+      <div class="card-tag" data-i18n="mn-c3-tag">Menú del día</div>
+      <div class="card-name" data-i18n="mn-c3-name">3 platos + bebida incluida</div>
+      <p class="card-desc" data-i18n="mn-c3-desc">Cocina de mercado que cambia a diario. Primero, segundo y postre con bebida incluida.</p>
     </div>
   </div>
 
@@ -805,29 +819,29 @@
     <div class="menu-card fade-up">
       <div class="card-img"><img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=600&q=75" alt="Sangría"></div>
       <div class="card-price">€6.50</div>
-      <div class="card-tag">Cóctel de la casa</div>
-      <div class="card-name">Sangría de Concierto</div>
-      <p class="card-desc">Vino tinto, brandy, frutas de temporada, limón y un toque secreto de la barra.</p>
+      <div class="card-tag" data-i18n="mn-b1-tag">Cóctel de la casa</div>
+      <div class="card-name" data-i18n="mn-b1-name">Sangría de Concierto</div>
+      <p class="card-desc" data-i18n="mn-b1-desc">Vino tinto, brandy, frutas de temporada, limón y un toque secreto de la barra.</p>
     </div>
     <div class="menu-card fade-up d1">
       <div class="card-img"><img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=75" alt="Cerveza artesana"></div>
       <div class="card-price">€3.80</div>
-      <div class="card-tag">Cervezas</div>
-      <div class="card-name">Cerveza artesana de barril</div>
-      <p class="card-desc">Rotación de cervezas artesanas locales. Pregunta al camarero cuál hay hoy.</p>
+      <div class="card-tag" data-i18n="mn-b2-tag">Cervezas</div>
+      <div class="card-name" data-i18n="mn-b2-name">Cerveza artesana de barril</div>
+      <p class="card-desc" data-i18n="mn-b2-desc">Rotación de cervezas artesanas locales. Pregunta al camarero cuál hay hoy.</p>
     </div>
     <div class="menu-card fade-up d2">
       <div class="card-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=75" alt="Vermut"></div>
       <div class="card-price">€4.50</div>
-      <div class="card-tag">El ritual del domingo</div>
-      <div class="card-name">Vermut de grifo con sifón</div>
-      <p class="card-desc">Vermut rojo, sifón, naranja y aceitunas. Con pica-pica de la casa incluido.</p>
+      <div class="card-tag" data-i18n="mn-b3-tag">El ritual del domingo</div>
+      <div class="card-name" data-i18n="mn-b3-name">Vermut de grifo con sifón</div>
+      <p class="card-desc" data-i18n="mn-b3-desc">Vermut rojo, sifón, naranja y aceitunas. Con pica-pica de la casa incluido.</p>
     </div>
   </div>
 
   <div class="menu-cta fade-up">
     <a href="#" class="btn btn-light">
-      Ver carta completa
+      <span data-i18n="mn-cta">Ver carta completa</span>
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
   </div>
@@ -846,11 +860,11 @@
   <p class="tq-quote fade-up">"Good drinks, good people, good music.<br><strong>That's Concierto.</strong>"</p>
   <p class="tq-attr fade-up d1">— Concierto Cafeteria · Playa Flamenca, Alicante</p>
   <div class="tq-pills fade-up d2">
-    <span class="pill">Abierto todos los días</span>
-    <span class="pill">Terraza mediterránea</span>
-    <span class="pill">Música en vivo</span>
-    <span class="pill">Cocina de mercado</span>
-    <span class="pill">Entrada siempre libre</span>
+    <span class="pill" data-i18n="qt-pill-1">Abierto todos los días</span>
+    <span class="pill" data-i18n="qt-pill-2">Terraza mediterránea</span>
+    <span class="pill" data-i18n="qt-pill-3">Música en vivo</span>
+    <span class="pill" data-i18n="qt-pill-4">Cocina de mercado</span>
+    <span class="pill" data-i18n="qt-pill-5">Entrada siempre libre</span>
   </div>
 </div>
 
@@ -859,16 +873,16 @@
   <div class="music-deco">♪</div>
   <div class="events-grid">
     <div>
-      <div class="eyebrow ochre fade-up"><span></span>Música &amp; Eventos</div>
-      <h2 class="sec-title fade-up d1">El alma de<br><em style="color:var(--ochre)">Concierto</em></h2>
-      <p class="events-body fade-up d2">Cada semana artistas locales e internacionales llenan la terraza de música en directo. Desde jazz acústico hasta flamenco fusión — hay noches que no se olvidan. Entrada siempre libre.</p>
+      <div class="eyebrow ochre fade-up"><span></span><span data-i18n="ev-eyebrow">Música &amp; Eventos</span></div>
+      <h2 class="sec-title fade-up d1" data-i18n-html="ev-h2">El alma de<br><em style="color:var(--ochre)">Concierto</em></h2>
+      <p class="events-body fade-up d2" data-i18n="ev-body">Cada semana artistas locales e internacionales llenan la terraza de música en directo. Desde jazz acústico hasta flamenco fusión — hay noches que no se olvidan. Entrada siempre libre.</p>
       <div class="event-list fade-up d3">
         <div class="ev-item">
           <div class="ev-date"><div class="ev-day">06</div><div class="ev-mon">Jun</div></div>
           <div class="ev-sep"></div>
           <div class="ev-info">
-            <div class="ev-title">Jazz en la terraza</div>
-            <div class="ev-meta">Viernes · 21:00 · Entrada libre</div>
+            <div class="ev-title" data-i18n="ev1-title">Jazz en la terraza</div>
+            <div class="ev-meta" data-i18n="ev1-meta">Viernes · 21:00 · Entrada libre</div>
           </div>
           <div class="ev-arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         </div>
@@ -876,8 +890,8 @@
           <div class="ev-date"><div class="ev-day">13</div><div class="ev-mon">Jun</div></div>
           <div class="ev-sep"></div>
           <div class="ev-info">
-            <div class="ev-title">Open Mic Night</div>
-            <div class="ev-meta">Viernes · 20:30 · Sube al escenario</div>
+            <div class="ev-title" data-i18n="ev2-title">Open Mic Night</div>
+            <div class="ev-meta" data-i18n="ev2-meta">Viernes · 20:30 · Sube al escenario</div>
           </div>
           <div class="ev-arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         </div>
@@ -885,8 +899,8 @@
           <div class="ev-date"><div class="ev-day">20</div><div class="ev-mon">Jun</div></div>
           <div class="ev-sep"></div>
           <div class="ev-info">
-            <div class="ev-title">Flamenco Fusión</div>
-            <div class="ev-meta">Viernes · 21:30 · Entrada libre</div>
+            <div class="ev-title" data-i18n="ev3-title">Flamenco Fusión</div>
+            <div class="ev-meta" data-i18n="ev3-meta">Viernes · 21:30 · Entrada libre</div>
           </div>
           <div class="ev-arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         </div>
@@ -894,8 +908,8 @@
           <div class="ev-date"><div class="ev-day">27</div><div class="ev-mon">Jun</div></div>
           <div class="ev-sep"></div>
           <div class="ev-info">
-            <div class="ev-title">Noche acústica</div>
-            <div class="ev-meta">Viernes · 21:00 · Entrada libre</div>
+            <div class="ev-title" data-i18n="ev4-title">Noche acústica</div>
+            <div class="ev-meta" data-i18n="ev4-meta">Viernes · 21:00 · Entrada libre</div>
           </div>
           <div class="ev-arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
         </div>
@@ -903,7 +917,7 @@
       <div style="margin-top:2rem" class="fade-up d4">
         <a href="tel:+34657373736" class="btn btn-ochre">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Reservar para el evento
+          <span data-i18n="ev-btn">Reservar para el evento</span>
         </a>
       </div>
     </div>
@@ -912,9 +926,9 @@
       <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=700&q=80" alt="Música en vivo Concierto">
       <div class="events-photo-overlay"></div>
       <div class="events-caption">
-        <div class="etag">Cada viernes</div>
-        <div class="ettl">Música en vivo</div>
-        <div class="esub">Entrada siempre libre · Terraza abierta</div>
+        <div class="etag" data-i18n="ev-caption-tag">Cada viernes</div>
+        <div class="ettl" data-i18n="ev-caption-ttl">Música en vivo</div>
+        <div class="esub" data-i18n="ev-caption-sub">Entrada siempre libre · Terraza abierta</div>
       </div>
     </div>
   </div>
@@ -934,8 +948,8 @@
       </div>
     </div>
     <div class="loc-info">
-      <div class="eyebrow fade-up"><span></span>Encuéntranos</div>
-      <h2 class="sec-title fade-up d1">Estamos en<br>Playa Flamenca</h2>
+      <div class="eyebrow fade-up"><span></span><span data-i18n="lc-eyebrow">Encuéntranos</span></div>
+      <h2 class="sec-title fade-up d1" data-i18n-html="lc-h2">Estamos en<br>Playa Flamenca</h2>
       <div class="contact-list fade-up d2">
         <a href="https://maps.google.com" target="_blank" class="clnk">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -951,15 +965,15 @@
         </a>
       </div>
       <div class="hours-tbl fade-up d3">
-        <div class="hours-head">Horario</div>
-        <div class="hrow"><span class="hday">Lunes – Viernes</span><span class="htime open">08:00 – 23:00</span></div>
-        <div class="hrow"><span class="hday">Sábado</span><span class="htime open">08:00 – 00:00</span></div>
-        <div class="hrow"><span class="hday">Domingo</span><span class="htime open">09:00 – 22:00</span></div>
+        <div class="hours-head" data-i18n="lc-hours-head">Horario</div>
+        <div class="hrow"><span class="hday" data-i18n="lc-day1">Lunes – Viernes</span><span class="htime open">08:00 – 23:00</span></div>
+        <div class="hrow"><span class="hday" data-i18n="lc-day2">Sábado</span><span class="htime open">08:00 – 00:00</span></div>
+        <div class="hrow"><span class="hday" data-i18n="lc-day3">Domingo</span><span class="htime open">09:00 – 22:00</span></div>
       </div>
       <div class="fade-up d4" style="margin-top:2.5rem">
         <a href="https://maps.google.com" target="_blank" class="btn btn-primary">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Cómo llegar
+          <span data-i18n="lc-btn">Cómo llegar</span>
         </a>
       </div>
     </div>
@@ -970,8 +984,8 @@
 <section class="reviews-sec" id="reviews">
   <div class="reviews-inner">
     <div class="reviews-head fade-up">
-      <div class="eyebrow" style="justify-content:center"><span></span>Google Reviews<span></span></div>
-      <h2 class="sec-title">Lo que dicen<br><em style="color:var(--terracotta)">nuestros clientes</em></h2>
+      <div class="eyebrow" style="justify-content:center"><span></span><span data-i18n="rv-eyebrow">Google Reviews</span><span></span></div>
+      <h2 class="sec-title" data-i18n-html="rv-h2">Lo que dicen<br><em style="color:var(--terracotta)">nuestros clientes</em></h2>
       <div class="g-badge" style="margin-top:2rem">
         <div class="g-badge-left">
           <div class="g-logo">
@@ -985,7 +999,7 @@
             </div>
           </div>
         </div>
-        <div class="g-count">Basado en 284 reseñas</div>
+        <div class="g-count" data-i18n="rv-count">Basado en 284 reseñas</div>
       </div>
     </div>
 
@@ -996,13 +1010,13 @@
           <div class="rev-avatar" style="background:var(--terracotta)">M</div>
           <div class="rev-meta">
             <div class="rev-name">María García</div>
-            <div class="rev-date">Hace 2 semanas</div>
+            <div class="rev-date" data-i18n="rv1-date">Hace 2 semanas</div>
           </div>
         </div>
         <div class="rev-stars">
           <span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span>
         </div>
-        <p class="rev-text">Lugar increíble en Playa Flamenca. La terraza es preciosa, el ambiente cálido y la comida muy buena. Los huevos rotos son los mejores que he probado en la zona. Sin duda volvemos.</p>
+        <p class="rev-text" data-i18n="rv1-text">Lugar increíble en Playa Flamenca. La terraza es preciosa, el ambiente cálido y la comida muy buena. Los huevos rotos son los mejores que he probado en la zona. Sin duda volvemos.</p>
         <div class="rev-footer">
           <div class="rev-g-mark"><span class="rev-g-G">G</span><span class="rev-g-rest">Reseña de Google</span></div>
         </div>
@@ -1014,13 +1028,13 @@
           <div class="rev-avatar" style="background:var(--med-blue)">J</div>
           <div class="rev-meta">
             <div class="rev-name">James W.</div>
-            <div class="rev-date">Hace 1 mes</div>
+            <div class="rev-date" data-i18n="rv2-date">Hace 1 mes</div>
           </div>
         </div>
         <div class="rev-stars">
           <span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span>
         </div>
-        <p class="rev-text">Amazing spot! We come here every summer and it never disappoints. The live music on Friday nights is something special — great atmosphere and very friendly staff. The sangria is a must.</p>
+        <p class="rev-text" data-i18n="rv2-text">Amazing spot! We come here every summer and it never disappoints. The live music on Friday nights is something special — great atmosphere and very friendly staff. The sangria is a must.</p>
         <div class="rev-footer">
           <div class="rev-g-mark"><span class="rev-g-G">G</span><span class="rev-g-rest">Reseña de Google</span></div>
         </div>
@@ -1032,13 +1046,13 @@
           <div class="rev-avatar" style="background:var(--olive)">A</div>
           <div class="rev-meta">
             <div class="rev-name">Ana Rodríguez</div>
-            <div class="rev-date">Hace 3 semanas</div>
+            <div class="rev-date" data-i18n="rv3-date">Hace 3 semanas</div>
           </div>
         </div>
         <div class="rev-stars">
           <span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span>
         </div>
-        <p class="rev-text">El mejor vermut del domingo en toda la Costa Blanca. El sitio tiene una energía especial — familiar, auténtico, sin pretensiones. Y la música en vivo es un regalo. Entrada libre, eso lo dice todo.</p>
+        <p class="rev-text" data-i18n="rv3-text">El mejor vermut del domingo en toda la Costa Blanca. El sitio tiene una energía especial — familiar, auténtico, sin pretensiones. Y la música en vivo es un regalo. Entrada libre, eso lo dice todo.</p>
         <div class="rev-footer">
           <div class="rev-g-mark"><span class="rev-g-G">G</span><span class="rev-g-rest">Reseña de Google</span></div>
         </div>
@@ -1050,13 +1064,13 @@
           <div class="rev-avatar" style="background:var(--wood)">P</div>
           <div class="rev-meta">
             <div class="rev-name">Peter Schmidt</div>
-            <div class="rev-date">Hace 2 meses</div>
+            <div class="rev-date" data-i18n="rv4-date">Hace 2 meses</div>
           </div>
         </div>
         <div class="rev-stars">
           <span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span>
         </div>
-        <p class="rev-text">We discovered this gem by accident and ended up coming back four times during our holiday. Breakfast is excellent, the terrace has a beautiful view and the staff treats you like family. Highly recommend!</p>
+        <p class="rev-text" data-i18n="rv4-text">We discovered this gem by accident and ended up coming back four times during our holiday. Breakfast is excellent, the terrace has a beautiful view and the staff treats you like family. Highly recommend!</p>
         <div class="rev-footer">
           <div class="rev-g-mark"><span class="rev-g-G">G</span><span class="rev-g-rest">Reseña de Google</span></div>
         </div>
@@ -1068,13 +1082,13 @@
           <div class="rev-avatar" style="background:var(--charcoal)">C</div>
           <div class="rev-meta">
             <div class="rev-name">Carlos Martínez</div>
-            <div class="rev-date">Hace 3 días</div>
+            <div class="rev-date" data-i18n="rv5-date">Hace 3 días</div>
           </div>
         </div>
         <div class="rev-stars">
           <span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span>
         </div>
-        <p class="rev-text">El menú del día a 12€ es una pasada — cantidad, calidad y trato inmejorable. Y si cae en viernes, el concierto de la noche lo remata todo perfectamente. Un sitio que recomiendo a todo el que pase por aquí.</p>
+        <p class="rev-text" data-i18n="rv5-text">El menú del día a 12€ es una pasada — cantidad, calidad y trato inmejorable. Y si cae en viernes, el concierto de la noche lo remata todo perfectamente. Un sitio que recomiendo a todo el que pase por aquí.</p>
         <div class="rev-footer">
           <div class="rev-g-mark"><span class="rev-g-G">G</span><span class="rev-g-rest">Reseña de Google</span></div>
         </div>
@@ -1086,13 +1100,13 @@
           <div class="rev-avatar" style="background:var(--ochre-dk)">L</div>
           <div class="rev-meta">
             <div class="rev-name">Lisa B.</div>
-            <div class="rev-date">Hace 1 semana</div>
+            <div class="rev-date" data-i18n="rv6-date">Hace 1 semana</div>
           </div>
         </div>
         <div class="rev-stars">
           <span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span>
         </div>
-        <p class="rev-text">Perfect spot for a lazy Sunday afternoon. Fresh food, great cocktails and live music that makes the atmosphere magical. The calamares bocadillo was absolutely divine. Will definitely be back next year!</p>
+        <p class="rev-text" data-i18n="rv6-text">Perfect spot for a lazy Sunday afternoon. Fresh food, great cocktails and live music that makes the atmosphere magical. The calamares bocadillo was absolutely divine. Will definitely be back next year!</p>
         <div class="rev-footer">
           <div class="rev-g-mark"><span class="rev-g-G">G</span><span class="rev-g-rest">Reseña de Google</span></div>
         </div>
@@ -1107,24 +1121,24 @@
           <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
           <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
         </svg>
-        Escribe tu reseña en Google
+        <span data-i18n="rv-btn">Escribe tu reseña en Google</span>
       </a>
-      <p class="reviews-cta-note">Serás dirigido a nuestra página de Google Maps · Necesitas una cuenta de Google</p>
+      <p class="reviews-cta-note" data-i18n="rv-note">Serás dirigido a nuestra página de Google Maps · Necesitas una cuenta de Google</p>
     </div>
   </div>
 </section>
 
 <!-- ─── CTA BAND ─── -->
 <section class="cta-band">
-  <div class="cta-pre fade-up">Ven a Concierto</div>
+  <div class="cta-pre fade-up" data-i18n="ct-pre">Ven a Concierto</div>
   <h2 class="cta-title fade-up d1">Good drinks,<br><em>good people,</em><br>good music.</h2>
   <p class="cta-payoff fade-up d2"><strong>That's Concierto.</strong> — Playa Flamenca, Alicante</p>
   <div class="cta-btns fade-up d3">
     <a href="tel:+34657373736" class="btn btn-white">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Reservar mesa
+      <span data-i18n="ct-btn-book">Reservar mesa</span>
     </a>
-    <a href="#menu" class="btn btn-light">Ver la carta</a>
+    <a href="#menu" class="btn btn-light"><span data-i18n="ct-btn-menu">Ver la carta</span></a>
   </div>
 </section>
 
@@ -1133,7 +1147,7 @@
   <div class="footer-top">
     <div>
       <div class="ft-logo"><img src="brand_assets/Logo%20concierto%20cafetaria.png" alt="Concierto Cafeteria"></div>
-      <p class="ft-tagline">Good drinks, good people,<br>good music. That's Concierto.</p>
+      <p class="ft-tagline" data-i18n-html="ft-tagline">Good drinks, good people,<br>good music. That's Concierto.</p>
       <div class="ft-socials">
         <a href="#" class="soc" aria-label="Instagram">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -1147,35 +1161,35 @@
       </div>
     </div>
     <div>
-      <div class="ft-head">Carta</div>
+      <div class="ft-head" data-i18n="ft-h1">Carta</div>
       <ul class="ft-links">
-        <li><a href="#menu">Desayunos</a></li>
-        <li><a href="#menu">Comidas & tapas</a></li>
-        <li><a href="#menu">Bebidas</a></li>
-        <li><a href="#menu">Menú del día</a></li>
+        <li><a href="#menu" data-i18n="ft-l1-1">Desayunos</a></li>
+        <li><a href="#menu" data-i18n="ft-l1-2">Comidas & tapas</a></li>
+        <li><a href="#menu" data-i18n="ft-l1-3">Bebidas</a></li>
+        <li><a href="#menu" data-i18n="ft-l1-4">Menú del día</a></li>
       </ul>
     </div>
     <div>
-      <div class="ft-head">Visítanos</div>
+      <div class="ft-head" data-i18n="ft-h2">Visítanos</div>
       <ul class="ft-links">
-        <li><a href="#about">Nuestra historia</a></li>
-        <li><a href="#events">Música en vivo</a></li>
-        <li><a href="#events">Próximos eventos</a></li>
-        <li><a href="#location">Cómo llegar</a></li>
+        <li><a href="#about" data-i18n="ft-l2-1">Nuestra historia</a></li>
+        <li><a href="#events" data-i18n="ft-l2-2">Música en vivo</a></li>
+        <li><a href="#events" data-i18n="ft-l2-3">Próximos eventos</a></li>
+        <li><a href="#location" data-i18n="ft-l2-4">Cómo llegar</a></li>
       </ul>
     </div>
     <div>
-      <div class="ft-head">Contacto</div>
+      <div class="ft-head" data-i18n="ft-h3">Contacto</div>
       <ul class="ft-links">
         <li><a href="tel:+34657373736">+34 657 373 736</a></li>
-        <li><a href="mailto:hola@conciertocafeteria.es">Escribirnos</a></li>
-        <li><a href="#">Reservas online</a></li>
-        <li><a href="#">Eventos privados</a></li>
+        <li><a href="mailto:hola@conciertocafeteria.es" data-i18n="ft-l3-2">Escribirnos</a></li>
+        <li><a href="#" data-i18n="ft-l3-3">Reservas online</a></li>
+        <li><a href="#" data-i18n="ft-l3-4">Eventos privados</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="ft-copy">© 2025 Concierto Cafeteria · Playa Flamenca, Alicante</p>
+    <p class="ft-copy" data-i18n="ft-copy">© 2025 Concierto Cafeteria · Playa Flamenca, Alicante</p>
     <p class="ft-copy"><a href="#">Aviso legal</a> · <a href="#">Privacidad</a></p>
   </div>
 </footer>
@@ -1223,6 +1237,146 @@
       if (el) el.style.display = t === id ? 'grid' : 'none';
     });
   }
+
+  /* ── TRANSLATIONS ─────────────────────────────────── */
+  const i18n = {
+    es: {
+      'nav-about':'Nosotros','nav-menu':'Carta','nav-events':'Música','nav-find':'Ubicación','nav-reviews':'Reseñas','nav-book':'Reservar mesa',
+      'hero-hours':'Abierto hoy · Lun–Vie 08:00–23:00 · Sáb 08:00–00:00 · Dom 09:00–22:00',
+      'hero-eyebrow':'Playa Flamenca · Alicante',
+      'hero-h1':'Buena comida,<br><em>buena música.</em>',
+      'hero-tagline':'Good drinks, good people, good music.',
+      'hero-sub':'Tu cafetería de siempre en primera línea del Mediterráneo. Terraza, carta de todo el día y música en vivo cada semana.',
+      'hero-btn-book':'Reservar mesa','hero-btn-menu':'Ver la carta',
+      'hero-feat-1':'Música en vivo','hero-feat-2':'Terraza exterior','hero-feat-3':'Ambiente familiar','hero-feat-4':'Abierto todos los días',
+      'ab-badge':'Tu sitio de siempre',
+      'ab-eyebrow':'Nuestra historia',
+      'ab-h2':'Un rincón con<br><em style="color:var(--terracotta)">carácter propio</em>',
+      'ab-body1':'Concierto Cafeteria lleva años siendo el punto de encuentro de Playa Flamenca. Aquí conviven el café de la mañana, el vermut del mediodía, la carta de todo el día y las noches de música en directo — todo con la misma energía cálida y familiar.',
+      'ab-body2':'Somos amigos, familia y vecinos. Un espacio donde la gente repite porque se siente bien, come bien y pasa un buen rato.',
+      'ab-feat-1':'Cafetería','ab-feat-2':'Música live','ab-feat-3':'Terraza','ab-feat-4':'Familiar',
+      'mn-eyebrow':'Nuestra carta',
+      'mn-h2':'Para comer bien,<br><span style="color:var(--terracotta)">a buen precio.</span>',
+      'mn-tab-1':'Desayunos','mn-tab-2':'Comidas','mn-tab-3':'Bebidas',
+      'mn-d1-tag':'Clásico de la casa','mn-d1-name':'Tostadas con tomate & AOVE','mn-d1-desc':'Pan de masa madre, tomate fresco rallado, aceite de oliva virgen extra y sal en escamas.',
+      'mn-d2-tag':'Favorito local','mn-d2-name':'Huevos rotos con jamón','mn-d2-desc':'Huevos de corral sobre patatas fritas caseras y jamón serrano. El plato más pedido de la casa.',
+      'mn-d3-tag':'Cafetería','mn-d3-name':'Desayuno completo','mn-d3-desc':'Café con leche o zumo, tostada con mantequilla y mermelada, más zumo de naranja natural.',
+      'mn-c1-tag':'Fresco y ligero','mn-c1-name':'Ensalada mediterránea','mn-c1-desc':'Tomate, pepino, cebolla morada, aceitunas, queso feta y anchoas del Cantábrico.',
+      'mn-c2-tag':'Para llevar','mn-c2-name':'Bocadillo de calamares','mn-c2-desc':'Calamares a la romana con alioli casero en barra crujiente recién horneada. Un clásico sin igual.',
+      'mn-c3-tag':'Menú del día','mn-c3-name':'3 platos + bebida incluida','mn-c3-desc':'Cocina de mercado que cambia a diario. Primero, segundo y postre con bebida incluida.',
+      'mn-b1-tag':'Cóctel de la casa','mn-b1-name':'Sangría de Concierto','mn-b1-desc':'Vino tinto, brandy, frutas de temporada, limón y un toque secreto de la barra.',
+      'mn-b2-tag':'Cervezas','mn-b2-name':'Cerveza artesana de barril','mn-b2-desc':'Rotación de cervezas artesanas locales. Pregunta al camarero cuál hay hoy.',
+      'mn-b3-tag':'El ritual del domingo','mn-b3-name':'Vermut de grifo con sifón','mn-b3-desc':'Vermut rojo, sifón, naranja y aceitunas. Con pica-pica de la casa incluido.',
+      'mn-cta':'Ver carta completa',
+      'qt-pill-1':'Abierto todos los días','qt-pill-2':'Terraza mediterránea','qt-pill-3':'Música en vivo','qt-pill-4':'Cocina de mercado','qt-pill-5':'Entrada siempre libre',
+      'ev-eyebrow':'Música & Eventos',
+      'ev-h2':'El alma de<br><em style="color:var(--ochre)">Concierto</em>',
+      'ev-body':'Cada semana artistas locales e internacionales llenan la terraza de música en directo. Desde jazz acústico hasta flamenco fusión — hay noches que no se olvidan. Entrada siempre libre.',
+      'ev1-title':'Jazz en la terraza','ev1-meta':'Viernes · 21:00 · Entrada libre',
+      'ev2-title':'Open Mic Night','ev2-meta':'Viernes · 20:30 · Sube al escenario',
+      'ev3-title':'Flamenco Fusión','ev3-meta':'Viernes · 21:30 · Entrada libre',
+      'ev4-title':'Noche acústica','ev4-meta':'Viernes · 21:00 · Entrada libre',
+      'ev-btn':'Reservar para el evento',
+      'ev-caption-tag':'Cada viernes','ev-caption-ttl':'Música en vivo','ev-caption-sub':'Entrada siempre libre · Terraza abierta',
+      'lc-eyebrow':'Encuéntranos',
+      'lc-h2':'Estamos en<br>Playa Flamenca',
+      'lc-hours-head':'Horario','lc-day1':'Lunes – Viernes','lc-day2':'Sábado','lc-day3':'Domingo',
+      'lc-btn':'Cómo llegar',
+      'rv-eyebrow':'Google Reviews',
+      'rv-h2':'Lo que dicen<br><em style="color:var(--terracotta)">nuestros clientes</em>',
+      'rv-count':'Basado en 284 reseñas',
+      'rv1-date':'Hace 2 semanas','rv1-text':'Lugar increíble en Playa Flamenca. La terraza es preciosa, el ambiente cálido y la comida muy buena. Los huevos rotos son los mejores que he probado en la zona. Sin duda volvemos.',
+      'rv2-date':'Hace 1 mes','rv2-text':'Amazing spot! We come here every summer and it never disappoints. The live music on Friday nights is something special — great atmosphere and very friendly staff. The sangria is a must.',
+      'rv3-date':'Hace 3 semanas','rv3-text':'El mejor vermut del domingo en toda la Costa Blanca. El sitio tiene una energía especial — familiar, auténtico, sin pretensiones. Y la música en vivo es un regalo. Entrada libre, eso lo dice todo.',
+      'rv4-date':'Hace 2 meses','rv4-text':'We discovered this gem by accident and ended up coming back four times during our holiday. Breakfast is excellent, the terrace has a beautiful view and the staff treats you like family. Highly recommend!',
+      'rv5-date':'Hace 3 días','rv5-text':'El menú del día a 12€ es una pasada — cantidad, calidad y trato inmejorable. Y si cae en viernes, el concierto de la noche lo remata todo perfectamente. Un sitio que recomiendo a todo el que pase por aquí.',
+      'rv6-date':'Hace 1 semana','rv6-text':'Perfect spot for a lazy Sunday afternoon. Fresh food, great cocktails and live music that makes the atmosphere magical. The calamares bocadillo was absolutely divine. Will definitely be back next year!',
+      'rv-btn':'Escribe tu reseña en Google','rv-note':'Serás dirigido a nuestra página de Google Maps · Necesitas una cuenta de Google',
+      'ct-pre':'Ven a Concierto','ct-btn-book':'Reservar mesa','ct-btn-menu':'Ver la carta',
+      'ft-tagline':'Good drinks, good people,<br>good music. That\'s Concierto.',
+      'ft-h1':'Carta','ft-h2':'Visítanos','ft-h3':'Contacto',
+      'ft-l1-1':'Desayunos','ft-l1-2':'Comidas & tapas','ft-l1-3':'Bebidas','ft-l1-4':'Menú del día',
+      'ft-l2-1':'Nuestra historia','ft-l2-2':'Música en vivo','ft-l2-3':'Próximos eventos','ft-l2-4':'Cómo llegar',
+      'ft-l3-2':'Escribirnos','ft-l3-3':'Reservas online','ft-l3-4':'Eventos privados',
+      'ft-copy':'© 2025 Concierto Cafeteria · Playa Flamenca, Alicante',
+    },
+    en: {
+      'nav-about':'About','nav-menu':'Menu','nav-events':'Music','nav-find':'Location','nav-reviews':'Reviews','nav-book':'Book a Table',
+      'hero-hours':'Open today · Mon–Fri 08:00–23:00 · Sat 08:00–00:00 · Sun 09:00–22:00',
+      'hero-eyebrow':'Playa Flamenca · Alicante',
+      'hero-h1':'Good food,<br><em>good music.</em>',
+      'hero-tagline':'Good drinks, good people, good music.',
+      'hero-sub':'Your favourite café on the Mediterranean seafront. Terrace, all-day menu and live music every week.',
+      'hero-btn-book':'Book a Table','hero-btn-menu':'View Menu',
+      'hero-feat-1':'Live Music','hero-feat-2':'Outdoor Terrace','hero-feat-3':'Family Friendly','hero-feat-4':'Open Every Day',
+      'ab-badge':'Your neighbourhood spot',
+      'ab-eyebrow':'Our Story',
+      'ab-h2':'A spot with<br><em style="color:var(--terracotta)">real character</em>',
+      'ab-body1':'Concierto Cafeteria has been the meeting point of Playa Flamenca for years. Morning coffee, midday vermouth, all-day food and live music nights — all with the same warm, welcoming energy.',
+      'ab-body2':'We are friends, family and neighbours. A place where people come back because they feel good, eat well and have a great time.',
+      'ab-feat-1':'Café','ab-feat-2':'Live Music','ab-feat-3':'Terrace','ab-feat-4':'Family',
+      'mn-eyebrow':'Our Menu',
+      'mn-h2':'Good food,<br><span style="color:var(--terracotta)">at a great price.</span>',
+      'mn-tab-1':'Breakfast','mn-tab-2':'Mains','mn-tab-3':'Drinks',
+      'mn-d1-tag':'House Classic','mn-d1-name':'Toast with Tomato & Olive Oil','mn-d1-desc':'Sourdough bread, freshly grated tomato, extra virgin olive oil and flaked salt.',
+      'mn-d2-tag':'Local Favourite','mn-d2-name':'Broken Eggs with Ham','mn-d2-desc':'Free-range eggs over homemade fried potatoes and cured ham. The most ordered dish in the house.',
+      'mn-d3-tag':'Café','mn-d3-name':'Full Breakfast','mn-d3-desc':'Café con leche or juice, buttered toast with jam, plus fresh-squeezed orange juice.',
+      'mn-c1-tag':'Fresh & Light','mn-c1-name':'Mediterranean Salad','mn-c1-desc':'Tomato, cucumber, red onion, olives, feta cheese and Cantabrian anchovies.',
+      'mn-c2-tag':'To Go','mn-c2-name':'Calamari Bocadillo','mn-c2-desc':'Roman-style calamari with homemade aioli in a freshly baked crusty roll. A classic like no other.',
+      'mn-c3-tag':'Daily Menu','mn-c3-name':'3 courses + drink included','mn-c3-desc':'Market-fresh cooking that changes daily. Starter, main and dessert with drink included.',
+      'mn-b1-tag':'House Cocktail','mn-b1-name':'Concierto Sangría','mn-b1-desc':'Red wine, brandy, seasonal fruit, lemon and a secret touch from the bar.',
+      'mn-b2-tag':'Beers','mn-b2-name':'Craft Beer on Tap','mn-b2-desc':'Rotating selection of local craft beers. Ask the barman what\'s on today.',
+      'mn-b3-tag':'The Sunday Ritual','mn-b3-name':'Draft Vermouth with Soda','mn-b3-desc':'Red vermouth, soda, orange and olives. House snacks included.',
+      'mn-cta':'View Full Menu',
+      'qt-pill-1':'Open Every Day','qt-pill-2':'Mediterranean Terrace','qt-pill-3':'Live Music','qt-pill-4':'Market Cuisine','qt-pill-5':'Always Free Entry',
+      'ev-eyebrow':'Music & Events',
+      'ev-h2':'The soul of<br><em style="color:var(--ochre)">Concierto</em>',
+      'ev-body':'Every week local and international artists fill the terrace with live music. From acoustic jazz to flamenco fusion — there are nights you won\'t forget. Always free entry.',
+      'ev1-title':'Jazz on the Terrace','ev1-meta':'Friday · 21:00 · Free Entry',
+      'ev2-title':'Open Mic Night','ev2-meta':'Friday · 20:30 · Take the Stage',
+      'ev3-title':'Flamenco Fusion','ev3-meta':'Friday · 21:30 · Free Entry',
+      'ev4-title':'Acoustic Night','ev4-meta':'Friday · 21:00 · Free Entry',
+      'ev-btn':'Book for the Event',
+      'ev-caption-tag':'Every Friday','ev-caption-ttl':'Live Music','ev-caption-sub':'Always Free Entry · Open Terrace',
+      'lc-eyebrow':'Find Us',
+      'lc-h2':'We\'re in<br>Playa Flamenca',
+      'lc-hours-head':'Opening Hours','lc-day1':'Monday – Friday','lc-day2':'Saturday','lc-day3':'Sunday',
+      'lc-btn':'Get Directions',
+      'rv-eyebrow':'Google Reviews',
+      'rv-h2':'What our<br><em style="color:var(--terracotta)">customers say</em>',
+      'rv-count':'Based on 284 reviews',
+      'rv1-date':'2 weeks ago','rv1-text':'Amazing spot at Playa Flamenca. The terrace is beautiful, the atmosphere warm and the food excellent. The huevos rotos are the best I\'ve tried in the area. We\'ll definitely be back.',
+      'rv2-date':'1 month ago','rv2-text':'Amazing spot! We come here every summer and it never disappoints. The live music on Friday nights is something special — great atmosphere and very friendly staff. The sangria is a must.',
+      'rv3-date':'3 weeks ago','rv3-text':'The best Sunday vermouth on the entire Costa Blanca. The place has a special energy — family-friendly, authentic, unpretentious. And the live music is a gift. Free entry — that says it all.',
+      'rv4-date':'2 months ago','rv4-text':'We discovered this gem by accident and ended up coming back four times during our holiday. Breakfast is excellent, the terrace has a beautiful view and the staff treats you like family. Highly recommend!',
+      'rv5-date':'3 days ago','rv5-text':'The daily menu at €12 is outstanding — great portions, great quality and excellent service. And if you visit on a Friday, the live concert tops it all off perfectly. A place I recommend to everyone passing through.',
+      'rv6-date':'1 week ago','rv6-text':'Perfect spot for a lazy Sunday afternoon. Fresh food, great cocktails and live music that makes the atmosphere magical. The calamares bocadillo was absolutely divine. Will definitely be back next year!',
+      'rv-btn':'Write a Review on Google','rv-note':'You\'ll be directed to our Google Maps page · A Google account is required',
+      'ct-pre':'Come to Concierto','ct-btn-book':'Book a Table','ct-btn-menu':'View Menu',
+      'ft-tagline':'Good drinks, good people,<br>good music. That\'s Concierto.',
+      'ft-h1':'Menu','ft-h2':'Visit Us','ft-h3':'Contact',
+      'ft-l1-1':'Breakfast','ft-l1-2':'Mains & Tapas','ft-l1-3':'Drinks','ft-l1-4':'Daily Menu',
+      'ft-l2-1':'Our Story','ft-l2-2':'Live Music','ft-l2-3':'Upcoming Events','ft-l2-4':'How to Get Here',
+      'ft-l3-2':'Contact Us','ft-l3-3':'Online Bookings','ft-l3-4':'Private Events',
+      'ft-copy':'© 2025 Concierto Cafeteria · Playa Flamenca, Alicante',
+    }
+  };
+
+  function setLang(lang) {
+    const t = i18n[lang];
+    Object.keys(t).forEach(key => {
+      document.querySelectorAll(`[data-i18n="${key}"]`).forEach(el => { el.textContent = t[key]; });
+      document.querySelectorAll(`[data-i18n-html="${key}"]`).forEach(el => { el.innerHTML = t[key]; });
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+    document.documentElement.lang = lang;
+    localStorage.setItem('conciertolang', lang);
+  }
+
+  (function() {
+    const saved = localStorage.getItem('conciertolang');
+    if (saved === 'en') setLang('en');
+  })();
 </script>
 </body>
 </html>
